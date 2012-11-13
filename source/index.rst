@@ -6,6 +6,10 @@
 Computational Analysis and Prediction of Peptide-Protein Interactions
 =====================================================================
 
+.. only:: not pdf
+   
+   :Generated: |today|.
+
 Contents:
 
 .. toctree::
@@ -26,4 +30,3 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Generated |today|.
