@@ -11,3 +11,4 @@ We revised the existing set of |ppdb| structures with the following criteria:
 .. |ppdb| replace:: PeptiDB
 
 
+2. NMR structures? **ASSAF: nothing to say so far**
