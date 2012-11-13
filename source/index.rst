@@ -3,14 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-My M.Sc. Thesis
-========================================
+Computational Analysis and Prediction of Peptide-Protein Interactions
+=====================================================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   abstract
+   intro
+   peptidb2
+   peptimap
+   discussion
+   methods
 
 
 Indices and tables
