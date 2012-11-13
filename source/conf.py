@@ -89,9 +89,12 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ---------------------------------------------------
 
+sys.path.append(os.path.abspath('_themes'))
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+#html_theme = 'default'
+html_theme = 'bootstrap'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -99,7 +102,7 @@ html_theme = 'default'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = ['_themes']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -128,7 +131,7 @@ html_static_path = ['_static']
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
-#html_use_smartypants = True
+html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
 #html_sidebars = {}
@@ -183,7 +186,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'MScThesis.tex', u'M.Sc. Thesis Documentation',
+  ('index', 'MScThesis.tex', u'M.Sc. Thesis',
    u'Assaf Faragy', 'manual'),
 ]
 
@@ -213,7 +216,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'mscthesis', u'M.Sc. Thesis Documentation',
+    ('index', 'mscthesis', u'M.Sc. Thesis',
      [u'Assaf Faragy'], 1)
 ]
 
@@ -227,7 +230,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'MScThesis', u'M.Sc. Thesis Documentation',
+  ('index', 'MScThesis', u'M.Sc. Thesis',
    u'Assaf Faragy', 'MScThesis', 'One line description of project.',
    'Miscellaneous'),
 ]
