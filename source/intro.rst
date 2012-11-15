@@ -5,7 +5,7 @@ Peptide-protein interactions are complex and important
 ------------------------------------------------------
 
 General stuff about peptide-protein interactions
-************************************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * protein-protein interactions are involved in numerous cellular
   processes, from *something* to *something else*.
@@ -24,14 +24,14 @@ General stuff about peptide-protein interactions
 * Therapeutic peptides.
 
 Structural analysis
-******************************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * peptide protein interactions have many different conformations
 * linear peptides: **do we have something about that?**
 * helical peptides: **anything?**
 
 Peptides bind using hot spots
-*****************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Contrary to the case with PPIs, peptides naturally don't expose a
   large interaction surface. They instead depend on a few amino-acid
