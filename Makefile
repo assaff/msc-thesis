@@ -18,7 +18,9 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 RST2PDF_BIN = $(USER_BIN)/rst2pdf
 RST2PDF_STYLESHEET = source/_rst2pdf/styles/thesis.stylesheet
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext rst2pdf
+.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext rst2pdf thesis
+
+thesis:	html epub rst2pdf
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
