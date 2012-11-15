@@ -2,8 +2,9 @@
 #
 
 # You can set these variables from the command line.
+USER_BIN      = /vol/ek/assaff/bin
 SPHINXOPTS    =
-SPHINXBUILD   = /vol/ek/assaff/bin/sphinx-build
+SPHINXBUILD   = $(USER_BIN)/sphinx-build
 PAPER         =
 BUILDDIR      = build
 
@@ -14,7 +15,7 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) sou
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
-RST2PDF_BIN = rst2pdf
+RST2PDF_BIN = $(USER_BIN)/rst2pdf
 RST2PDF_STYLESHEET = source/_rst2pdf/styles/thesis.stylesheet
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext rst2pdf
