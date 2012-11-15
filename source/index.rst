@@ -17,12 +17,14 @@
    peptimap
    discussion
    methods
+   references
 
 
-Indices and tables
-==================
+.. Indices commented out
+    Indices and tables
+    ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    + :ref:`genindex`
+    + :ref:`modindex`
+    + :ref:`search`
 

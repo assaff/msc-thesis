@@ -22,6 +22,8 @@ General stuff about peptide-protein interactions
   interact with cleaved antigen fragments and display them onto the
   cell surface.
 * Therapeutic peptides.
+* This is a citation of :cite:`raveh:2010` that is in the ``refs.bib``
+  file.
 
 Structural analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
