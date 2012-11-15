@@ -3,14 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Computational Analysis and Prediction of Peptide-Protein Interactions
-=====================================================================
-
-.. only:: not pdf
-   
-   :Generated: |today|.
-
-Contents:
+:title: Computational Analysis and Prediction of Peptide-Protein Interactions
+:author: Assaf Faragy
+:date: |today|
+:status: Beta
 
 .. toctree::
    :maxdepth: 2
