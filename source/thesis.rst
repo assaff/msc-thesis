@@ -27,10 +27,11 @@ Computational Analysis and Prediction of Peptide-Protein Interactions
 =====================================================================
 
 -----------------------------------------------------
-Master of Science thesis by Assaf Faragy
+Master of Science thesis
 -----------------------------------------------------
 
 :author: Assaf Faragy <assaff@cs.huji.ac.il>
+:Advisor: Prof. Ora Schueler-Furman
 :version: 0.2
 
 1) Department of Microbiology and Molecular Genetics, Institute for Medical Research IMRIC, Faculty of Medicine, The Hebrew University of Jerusalem, POB 12272, Jerusalem 91120, Israel 
