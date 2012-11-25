@@ -61,7 +61,8 @@ receptor at large as well.
 [Compare with pepsite]
 
 
-We tested PeptiMap on PeptiDB2, and compared it to PepSite [pepsite]_, a program for peptide binding site prediction, that searches for structural environments that are similar to ones observed in known complex structures, on a residue basis.
+We tested PeptiMap on PeptiDB2, and compared it to PepSite
+[Petsalaki2009]_, a program for peptide binding site prediction, that searches for structural environments that are similar to ones observed in known complex structures, on a residue basis.
 
 In this initial assessment, we used the interactions with identical sequence in the bound and unbound receptor. This eliminates artifacts that may result from sequence changes in the binding site.
 
