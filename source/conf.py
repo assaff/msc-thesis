@@ -189,10 +189,12 @@ htmlhelp_basename = 'MScThesisdoc'
 
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+'papersize': 'a4paper',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+'pointsize': '11pt',
+
+#'fontpkg': '\\usepackage{palatino}',
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
@@ -201,8 +203,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'MScThesis.tex', u'M.Sc. Thesis',
-   u'Assaf Faragy', 'manual'),
+  ('index', 'MScThesis.tex', title,
+   author_full_name, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
