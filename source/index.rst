@@ -8,6 +8,9 @@
 :date: |today|
 :status: Beta
 
+Table of Contents
+==================
+
 .. toctree::
    :maxdepth: 2
 
