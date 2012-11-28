@@ -34,13 +34,21 @@ peptide-protein interactions. In that study, a set of 103 interactions
 were collected, annotated and analyzed using various computational
 methods. It suggests that peptide-protein interactions are:
 
-* mediated by hot-spot residues in the peptide
-* have certain propensities of amino-acids
-* other stuff from peptidb paper
+* mediated by *hot-spot residues* in the peptide
+* receptor doesn't undergo major conformational change
+* hydrogen bonds are enriched in interface, contributing a lot to
+  binding energy.
 
+Subsets of peptide-protein interactions
+"""""""""""""""""""""""""""""""""""""""
 
+In order to provide a more close-up view of this kind of interactions,
+we looked closely at the defining characteristics of interaction
+subtypes, defined by the peptide structure. Already in [London2012]_
+it was apparent that helical peptides bind differently than beta
+peptides, which in turn differ from coil peptides. We set out to
+explore these differences from the hot-spot angle.
 
-* peptide protein interactions have many different conformations
 * linear peptides: **something?**
 * helical peptides: **anything?**
 
