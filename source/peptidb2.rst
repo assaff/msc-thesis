@@ -11,7 +11,7 @@ Data curation
 We compiled a set of peptide-protein interactions, including experimental
 structures of the bound complex and the unbound receptor. 
 Curation started with the non-redundant set of 61 complexes described
-in [London2010]_. 
+in [peptidb:2010]_. 
 Several complexes from that set were manually refreshed when possible,
 or otherwise discarded.
 If an interaction had any of the following "symptoms", it was either
