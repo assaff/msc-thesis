@@ -16,12 +16,17 @@ in [peptidb:2010]_, each interaction undergoing manual inspection.
 If an interaction had any of the following "symptoms", it was either
 fixed by replacing the structures representing it, or discarded:
 
-* unbound structure is NMR *[1d4t, 1jd5, 2zjd, 2oei, 3d9t]*
-* low sequence id between bound/unbound *[2p0w, 1se0, 2d0n, 1qkz,
-  1jwg, 1hc9, 1ymt, 1t4f, 1ywo, 3cvp, 3d9t, 1dkz, 1tw6, 2jam]*
-* low-resolution unbound structure *[2v8y, 1fm9, 2j6f, 1nvr, 2p54]*
-* better bound structure *[1sfi/2age, 2ak5/2df6, ]*
-* ambiguity over the identity of the peptide
+* Unbound structure is NMR *[1d4t, 1jd5, 2zjd, 2oei, 3d9t]*. In most
+  cases an X-ray structure was found as a substitute.
+* Low sequence id between bound/unbound *[2p0w, 1se0, 2d0n, 1qkz,
+  1jwg, 1hc9, 1ymt, 1t4f, 1ywo, 3cvp, 3d9t, 1dkz, 1tw6, 2jam]*. All
+  interactions currently have **at least 91%** sequence identity between bound
+  and unbound structures.
+* Low-resolution unbound structure *[2v8y, 1fm9, 2j6f, 1nvr, 2p54]*.
+  All structures in the data set are currently X-ray structures with
+  :math:`<3.0 \AA` resolution.
+* Better bound structure *[1sfi/2age, 2ak5/2df6, ]*
+* Ambiguity over the identity of the peptide
 
 Additionally, each entry was annotated with:
 
