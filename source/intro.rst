@@ -1,6 +1,16 @@
 Introduction
 =============
 
+Outline
+-----------
+
+.. important::
+    * the importance of protein-protein interactions, state-of-the-art.
+    * PePIs: their roles, their characteristics.
+    * Why investigate PePIs? Why are they interesting?
+    * What do we know about them currently? [Literature review]
+    * What is missing currently? How do we suggest to fill the gap?
+
 Peptide-protein interactions are complex and important
 ------------------------------------------------------
 

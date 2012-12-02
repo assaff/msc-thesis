@@ -28,3 +28,29 @@ Data set features (ideal):
   because we're after the features that are also found in unbound
   structures, so it's best to eliminate artifacts as much as possible.
 * 
+
+
+Knowledge dump
+----------------
+
+* PPIs:
+  - are crucial in many cellular processes [citation here]
+  - interfaces are in many cases broad, flat surfaces
+    [cohesin-dockerin], where hot spots determine specificity.
+* PePIs:
+  - defined as interactions between a globular domain and a linear
+    polypeptide, whether as a flexible loop/tail or a free molecule.
+  - highly-prevalent, involved in many important processes
+  - Structural basis of interactions
+    # receptor doesn't undergo major conformational change.
+    # importance of hydrogen bonds and where
+    # the role that hot-spot residues play in the interfaces
+  - other studies and their findings:
+
+* Computational approaches to studying PePIs (our focus):
+  - Computational fragment mapping (FTMap):
+    # Rationale in short
+    # Method
+    # results with proteins and ligands
+
+
