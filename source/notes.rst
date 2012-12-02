@@ -1,4 +1,4 @@
-General scheme of thesis
+Draft notes
 ==========================
 
 
@@ -40,7 +40,7 @@ Knowledge dump
 * PePIs:
   - defined as interactions between a globular domain and a linear
     polypeptide, whether as a flexible loop/tail or a free molecule.
-  - highly-prevalent, involved in many important processes
+      - highly-prevalent, involved in many important processes
   - Structural basis of interactions
     # receptor doesn't undergo major conformational change.
     # importance of hydrogen bonds and where

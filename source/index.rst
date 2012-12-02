@@ -16,6 +16,7 @@ Table of Contents
 
    abstract
    intro
+   notes
    peptidb2
    peptimap
    discussion
