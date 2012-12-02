@@ -1,5 +1,5 @@
-msc-thesis
-==========
+My M.Sc. Thesis
+=================
 
-Testing git access
+A [Sphinx](http://sphinx-doc.org/) project.
 

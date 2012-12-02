@@ -19,7 +19,6 @@ Table of Contents
    peptidb2
    peptimap
    discussion
-   methods
    references
 
 
