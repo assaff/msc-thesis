@@ -14,9 +14,9 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
 
+   notes
    abstract
    background
-   notes
    peptidb2
    peptimap
    discussion
