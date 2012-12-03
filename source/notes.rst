@@ -67,4 +67,42 @@ Knowledge dump
         * Conservation [ConSurf].
 
 
+Paragraph titles
+-----------------
 
+* protein protein interactions are central to cellular function
+* many PPIs are mediated by peptides
+* peptides are sometimes free molecules
+* London et al. described the strategies that peptides take to
+  bind their partners.
+* They specifically use hot spot residues as hooks who contribute much
+  of the binding energy.
+* In their binding strategies, peptides resemble small-molecule
+  ligands on one hand, and PPIs on the other.
+* Hot spot residues are highly enriched in hydrophobic residues
+  [London2010].
+* we revised peptidb for higher-quality structures, annotating
+  certain properties about these interactions that deserve some
+  specific attention (crystal contacts, biological assembly, sequence
+  identity)
+* we used different tools that predict ligand binding as features for
+  a SVM to predict binding residues. It did not come to fruition.
+* To mimic hot-spot side-chains, we used computational fragment
+  mapping.
+* FTMap soaks a protein structure in different solvents, simulates
+  where they bind favorably, and clusters these results into consensus
+  clusters.
+* it was shown that CSs are highly indicative of ligand binding
+  [FTSite]. It is currently the best-performing tool for ligand
+  binding site prediction, outperforming all others (fpocket, ligsite,
+  castp, etc.).
+* it was also shown that in PPIs, these CSs correlate very well with
+  hot-spot residues, with energy measured both computationally and
+  experimentally.
+* we computed FTMap CSs for all unbound structures in PeptiDB2.
+* predictions are ranked by their percentage of total contacts between
+  probes and receptor.
+* The hot-spot based approach is further justified by multiplicity of
+  peptides that bind the same receptor. Examples Menin-MLL-JUND,
+  SH3, p53 [Petsalaki2008].
+* 
