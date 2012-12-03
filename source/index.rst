@@ -15,7 +15,7 @@ Table of Contents
    :maxdepth: 2
 
    abstract
-   intro
+   background
    notes
    peptidb2
    peptimap
