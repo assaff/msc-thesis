@@ -20,7 +20,7 @@ RST2PDF_STYLESHEET = source/_rst2pdf/styles/thesis.stylesheet
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext rst2pdf thesis pdf
 
-thesis:	html epub rst2pdf pdf
+thesis:	html latexpdf #rst2pdf
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
