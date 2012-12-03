@@ -34,23 +34,37 @@ Knowledge dump
 ----------------
 
 * PPIs:
-  - are crucial in many cellular processes [citation here]
-  - interfaces are in many cases broad, flat surfaces
+    - are crucial in many cellular processes [citation here]
+    - interfaces are in many cases broad, flat surfaces
     [cohesin-dockerin], where hot spots determine specificity.
 * PePIs:
-  - defined as interactions between a globular domain and a linear
-    polypeptide, whether as a flexible loop/tail or a free molecule.
-      - highly-prevalent, involved in many important processes
-  - Structural basis of interactions
-    # receptor doesn't undergo major conformational change.
-    # importance of hydrogen bonds and where
-    # the role that hot-spot residues play in the interfaces
-  - other studies and their findings:
+    - Defined as interactions between a globular domain and a linear
+      polypeptide, whether as a flexible loop/tail or a free molecule.
+      See examples in [Petsalaki2008] (review) and [Neduva2006] for
+      prominent interaction types. See also [SteinAloy2008] for a
+      review.
+    - Highly-prevalent, involved in many important processes
+    - Structural basis of interactions (PeptiDB paper [London2010]):
+        - receptor doesn't undergo major conformational change.
+        - importance of hydrogen bonds and where
+        - the role that hot-spot residues play in the interfaces
+      **We wanted to look deeper into the binding mechanism of
+      peptides, particularly the role that hot-spot residues play in
+      these interactions.**
+      Our approach relies greatly on computational fragment mapping to
+      capture hot-spot sites on the receptor surface.
+    - other studies and their findings:
 
 * Computational approaches to studying PePIs (our focus):
-  - Computational fragment mapping (FTMap):
-    # Rationale in short
-    # Method
-    # results with proteins and ligands
+    - Computational fragment mapping (FTMap):
+        - Rationale in short
+        - Method
+        - results with proteins and ligands
+    - PepSite
+    - Other approaches explored but not matured:
+        * Pocket mapping: see CASTp and fPocket for details of
+          servers.
+        * Conservation [ConSurf].
+
 
 
