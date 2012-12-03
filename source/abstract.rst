@@ -1,6 +1,31 @@
 Abstract
 =========
 
+Peptide-protein interactions are central components of cell function.
+**Examples here**.
+It is an elusive type of phenomenon, which challenges conventional
+tools and approaches of biochemical and computational investigation.
+
+Computational research of these interactions has made great strides
+in recent years with multiple efforts to collect and analyze
+experimental data, as well as to model these interactions *in-silico*.
+However, the mechanism by which peptides bind their protein partners
+*remains largely a mystery*.
+Particularly interesting are hot-spot residues, which are key to the
+whole binding process.
+
+In this work we present a new data set of peptide-protein
+interactions, 
+and results of computational fragment mapping on unbound structures
+from that set.
+These results are analyzed, revealing that peptide hot-spot residues
+correlate highly with **dense, large** clusters of probes,
+and compared to predictions made by leading tools.
+
+**[implications anybody?]**
+
+------------
+
 Peptide-protein interactions are key to many cellular processes, from
 signal transduction to transcription regulation. 
 In a previous study we compiled a set of structures of peptide-protein
