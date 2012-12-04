@@ -53,10 +53,10 @@ methods. The analysis suggests that peptide-protein interactions are:
     * helical peptides: **anything?**
 
 Computational solvent mapping
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 MSCS
-"""""
+~~~~~
 
 Multiple Solvent Crystal Structures (abbreviated MSCS) is a prominent
 experimental method to locate and characterize ligand binding sites on
@@ -76,7 +76,7 @@ This approach has proven very valuable in drug design. **[add more from
 Mattos/Ringe]**
 
 FTMAP
-"""""""
+~~~~~~~
 
 To avoid the laborious and costly experiments entailed by MSCS,
 the FTMAP protocol was developed as a computational approximation.
@@ -86,7 +86,7 @@ the rigid-body conformation space of a protein + probe complex.
 That allows for accurate identification of probe binding sites,
 followed by a clustering and ranking scheme.
 
-.. figure:: _images/ftsite.f1.large.jpg
+.. figure:: _images/ftsite-f1-large.jpg
     :width: 75%
     :align: center
     
@@ -100,7 +100,7 @@ further clustered using a greedy, distance-based algorithm, to produce
 consensus clusters. These are ranked by size (the number of clusters
 included in each CS).
 
-Peptides bind using hot spots
+Preliminary SVM study 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In a follow up study, we looked into the feasibility of designing a
