@@ -60,7 +60,7 @@ MSCS
 
 Multiple Solvent Crystal Structures (abbreviated MSCS) is a prominent
 experimental method to locate and characterize ligand binding sites on
-protein surfaces [Mattos1996]_ [Ringe1996]_.
+protein surfaces [Mattos1996]_ [Allen1996]_.
 In this method, the X-ray crystal structure of the protein of interest
 is solved in aqueous solutions of several organic solvents separately.
 These solvent molecules adhere to certain sites on the protein
