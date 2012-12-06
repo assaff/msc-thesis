@@ -101,7 +101,7 @@ consensus clusters. These are ranked by size (the number of clusters
 included in each CS).
 
 Preliminary SVM study 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 In a follow up study, we looked into the feasibility of designing a
 Support Vector Machine as a predictor of peptide binding sites. We
@@ -130,37 +130,9 @@ identify those areas in space directly, and fit the peptide onto them
   residues who contribute most of the binding energy.
 * These hot spots are usually **BLABLABLA**.
 
-Research goals and hypothesis
-------------------------------
-
-* What were our goals initially?
-  
-  - Better characterize peptide-protein interactions, picking up from
-    PeptiDB [reference here].
-  - Develop a method to identify peptide binding sites on protein
-    surfaces, which is peptide-agnostic, i.e. depends solely on
-    properties of the receptor protein.
-
-Modeling peptide-protein interactions
---------------------------------------
-
-Peptide-protein interactions are a challenge to model, both
-computationally and experimentally.
-
-A challenging kind of macromolecular interactions1,5:
-
-1. Crucial for many processes, ubiquitous across cell functions
-2. Often transient, weak
-3. Diverse in shape, size
-4. Experimental structures are not abundant
-
-Difficult to study, both experimentally and computationally
-
-State-of-the-art: accurate modeling of the peptide structure and
-orientation, given an approximate binding site
 
 Rosetta FlexPepDock
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 Rosetta FlexPepDock [Raveh2010]_ was developed in our lab to refine peptide models
 in a binding site into an accurate model, by efficiently sampling the
