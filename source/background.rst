@@ -42,7 +42,8 @@ peptide-protein interactions. In that study, a set of 103 interactions
 was collected, annotated and analyzed using various computational
 methods. The analysis suggests that peptide-protein interactions are:
 
-* mediated by *hot-spot residues* in the peptide
+* mediated by *hot-spot residues* in the peptide, enriched in
+  hydrophobic residues.
 * receptor doesn't undergo major conformational change
 * hydrogen bonds are enriched in interface, contributing a lot to
   binding energy.
