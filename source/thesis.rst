@@ -58,7 +58,7 @@ Master of Science thesis
     PageBreak
 
 
-.. include:: intro.rst
+.. include:: background.rst
 
 .. raw:: pdf
 
