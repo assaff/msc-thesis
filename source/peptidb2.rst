@@ -65,6 +65,16 @@ interactions (see Table 1).
 .. raw:: latex
     \end{landscape}
 
+Characterization of hot spot residues in PeptiDB2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: _images/aa_histogram_peptidb2.png
+    :width: 75%
+
+    Amino-acid distribution in hot-spot residues among peptide
+    residues in PeptiDB2, versus that in non-hot-spot residues in the
+    same data set.
+
 PeptiDB2 summary table
 ~~~~~~~~~~~~~~~~~~~~~~~
 
