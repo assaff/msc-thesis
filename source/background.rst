@@ -5,6 +5,9 @@ Background and Related Work
 Peptide-protein interactions
 ------------------------------------------------------
 
+.. hint::
+    What are PePIs, and why are they interesting to study?
+
 Protein-protein interactions are involved in numerous cellular
 processes, from *something* to *something else*.
 
@@ -26,6 +29,13 @@ cell surface.
 
 Structural characterization of PePIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. hint::
+    What do we already know about how PePIs behave?
+    How are they different from other interactions?
+    Reader should know about the results of PeptiDB study, especially
+    about what hot spot residues are and the role they play.
+
 
 London et al. [London2010]_ have conducted a structural analysis of
 peptide-protein interactions. In that study, a set of 103 interactions
@@ -72,8 +82,14 @@ It is common to see overlapping clusters of different solvent types in
 a binding site, referred to as *consensus sites* (CSs).
 These consensus sites delineate functionally important sites.
 
+.. hint::
+    impact of this method
+
 This approach has proven very valuable in drug design. **[add more from
 Mattos/Ringe]**
+
+.. hint::
+    lead into computational approach.
 
 FTMAP
 ~~~~~~~
@@ -99,6 +115,22 @@ Subsequently, clusters from difference probes are superimposed and
 further clustered using a greedy, distance-based algorithm, to produce
 consensus clusters. These are ranked by size (the number of clusters
 included in each CS).
+
+.. hint::
+    * FTMap reproduces experimental MSCS with good accuracy.
+    * FTMap successfully identifies PPI hot spots.
+    * FTMap allows for fast, large-scale analysis of protein surfaces
+      from the hot-spot point of view.
+
+Hot spot residues in PPIs
+--------------------------
+
+.. hint::
+    The two definitions of hot spot residues (energetic, MSCS).
+    How they coincide in PPIs.
+    Difference between the two definitions, and the usefulness in
+    different contexts. (see Zerbe et al. 2012)
+
 
 Preliminary SVM study 
 -----------------------------
