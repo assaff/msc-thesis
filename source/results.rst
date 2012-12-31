@@ -4,6 +4,61 @@ Results
 PeptiDB2: a high-quality set of peptide-protein interaction data
 ----------------------------------------------------------------
 
+Curation resulted in **[NUMBER OF LINES IN TABLE 1]** high-quality
+interactions (see Table 1).
+.. Structures are available as bound-unbound pairs, where the bound
+.. complex is superimposed onto the unbound receptor. 
+
+.. raw:: latex
+    \usepackage{lscape}
+    \begin{landscape}
+
+.. csv-table:: 
+    :file: _tables/peptidb2_table1.csv
+    :header-rows: 1
+
+.. raw:: latex
+    \end{landscape}
+
+Characterization of hot spot residues in PeptiDB2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: _images/aa_histogram_peptidb2.png
+    :width: 75%
+
+    Amino-acid distribution in hot-spot residues among peptide
+    residues in PeptiDB2, versus that in non-hot-spot residues in the
+    same data set.
+
+PeptiDB2 summary table
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. csv-table::
+    :url: https://docs.google.com/spreadsheet/pub?key=0ApXQ1x_sHoGrdFYwdEJ6aTFZckc3cHlzZEVzV01jUWc&single=true&gid=2&range=A1%3AF100&output=csv
+    :header-rows: 1
+    :widths: 2 1 1 2 1 2
+
+
+Crystal contacts in PePIs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In several of the structures curated, we noticed symmetry mates of the
+unbound receptor visibly overlapping with the peptide. 
+
+..
+    Comparing the sequences of these tails to their corresponding peptides
+    did not reveal high sequence correlation **[STATISTICS HERE]**.
+
+This usually involves an extended terminus in the unbound receptor. We
+have yet to investigate the meaning of this phenomenon.
+
+Machine-learning analysis of binding site features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+details about SVM analysis here.
+
+
+
 Features:
 
 1. Short peptides (5-15 aa)
