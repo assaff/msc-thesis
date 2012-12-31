@@ -25,7 +25,7 @@ the peptide is a free oligopeptide, e.g. MHC proteins
 interact with cleaved antigen fragments and display them onto the
 cell surface.
 
-**[Therapeutic peptides]**
+**[Therapeutic peptides: relevant?]**
 
 Structural characterization of PePIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,6 +47,9 @@ methods. The analysis suggests that peptide-protein interactions are:
 * receptor doesn't undergo major conformational change
 * hydrogen bonds are enriched in interface, contributing a lot to
   binding energy.
+
+**ORA: add more detail about peptidb study.**
+
 
 .. commented
 
