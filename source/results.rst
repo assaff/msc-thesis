@@ -83,6 +83,40 @@ The crucial role that hot spot residues play in protein-protein and
 peptide-protein interactions is a matter of consensus
 [ftmap_analysis]. 
 
+
+PeptiMap: an accurate predictor of peptide binding sites
+---------------------------------------------------------
+
+Motivation
+~~~~~~~~~~~
+
+Taken from conclusions of PeptiDB analysis of hot spots
+Justification of hot spot approach to binding site detection.
+
+Computational fragment mapping is a reliable approximation of hot-spot analysis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rationale of fragment mapping approach
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Track record of FT-Map in other contexts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Method: what is different about PeptiMap
+
+
+PeptiMap successfully predicts binding sites
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Against the competition
+
+Low-resolution modeling of PPIs from PeptiMap predictions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+some results here
+
+
+
 Predicting peptide binding sites 
 --------------------------------
 
