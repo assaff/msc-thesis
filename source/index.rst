@@ -19,8 +19,6 @@ Table of Contents
    background
    methods
    results
-   peptidb2
-   peptimap
    discussion
    references
 
