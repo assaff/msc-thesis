@@ -5,6 +5,9 @@ Background and Related Work
 Peptide-protein interactions
 ------------------------------------------------------
 
+.. hint::
+    What are PePIs, and why are they interesting to study?
+
 Protein-protein interactions are involved in numerous cellular
 processes, from *something* to *something else*.
 
@@ -27,12 +30,20 @@ cell surface.
 Structural characterization of PePIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. hint::
+    What do we already know about how PePIs behave?
+    How are they different from other interactions?
+    Reader should know about the results of PeptiDB study, especially
+    about what hot spot residues are and the role they play.
+
+
 London et al. [London2010]_ have conducted a structural analysis of
 peptide-protein interactions. In that study, a set of 103 interactions
 was collected, annotated and analyzed using various computational
 methods. The analysis suggests that peptide-protein interactions are:
 
-* mediated by *hot-spot residues* in the peptide
+* mediated by *hot-spot residues* in the peptide, enriched in
+  hydrophobic residues.
 * receptor doesn't undergo major conformational change
 * hydrogen bonds are enriched in interface, contributing a lot to
   binding energy.
@@ -72,8 +83,14 @@ It is common to see overlapping clusters of different solvent types in
 a binding site, referred to as *consensus sites* (CSs).
 These consensus sites delineate functionally important sites.
 
+.. hint::
+    impact of this method
+
 This approach has proven very valuable in drug design. **[add more from
 Mattos/Ringe]**
+
+.. hint::
+    lead into computational approach.
 
 FTMAP
 ~~~~~~~
@@ -100,8 +117,24 @@ further clustered using a greedy, distance-based algorithm, to produce
 consensus clusters. These are ranked by size (the number of clusters
 included in each CS).
 
+.. hint::
+    * FTMap reproduces experimental MSCS with good accuracy.
+    * FTMap successfully identifies PPI hot spots.
+    * FTMap allows for fast, large-scale analysis of protein surfaces
+      from the hot-spot point of view.
+
+Hot spot residues in PPIs
+--------------------------
+
+.. hint::
+    The two definitions of hot spot residues (energetic, MSCS).
+    How they coincide in PPIs.
+    Difference between the two definitions, and the usefulness in
+    different contexts. (see Zerbe et al. 2012)
+
+
 Preliminary SVM study 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 In a follow up study, we looked into the feasibility of designing a
 Support Vector Machine as a predictor of peptide binding sites. We
@@ -130,37 +163,9 @@ identify those areas in space directly, and fit the peptide onto them
   residues who contribute most of the binding energy.
 * These hot spots are usually **BLABLABLA**.
 
-Research goals and hypothesis
-------------------------------
-
-* What were our goals initially?
-  
-  - Better characterize peptide-protein interactions, picking up from
-    PeptiDB [reference here].
-  - Develop a method to identify peptide binding sites on protein
-    surfaces, which is peptide-agnostic, i.e. depends solely on
-    properties of the receptor protein.
-
-Modeling peptide-protein interactions
---------------------------------------
-
-Peptide-protein interactions are a challenge to model, both
-computationally and experimentally.
-
-A challenging kind of macromolecular interactions1,5:
-
-1. Crucial for many processes, ubiquitous across cell functions
-2. Often transient, weak
-3. Diverse in shape, size
-4. Experimental structures are not abundant
-
-Difficult to study, both experimentally and computationally
-
-State-of-the-art: accurate modeling of the peptide structure and
-orientation, given an approximate binding site
 
 Rosetta FlexPepDock
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 Rosetta FlexPepDock [Raveh2010]_ was developed in our lab to refine peptide models
 in a binding site into an accurate model, by efficiently sampling the

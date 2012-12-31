@@ -70,6 +70,9 @@ Knowledge dump
 Paragraph titles
 -----------------
 
+Background
+~~~~~~~~~~~~
+
 * protein protein interactions are central to cellular function
 * many PPIs are mediated by peptides
 * peptides are sometimes free molecules
@@ -99,10 +102,18 @@ Paragraph titles
 * it was also shown that in PPIs, these CSs correlate very well with
   hot-spot residues, with energy measured both computationally and
   experimentally.
-* we computed FTMap CSs for all unbound structures in PeptiDB2.
-* predictions are ranked by their percentage of total contacts between
-  probes and receptor.
 * The hot-spot based approach is further justified by multiplicity of
   peptides that bind the same receptor. Examples Menin-MLL-JUND,
   SH3, p53 [Petsalaki2008].
+
+Methods
+~~~~~~~~
+
+
+Results
+~~~~~~~~
+
+* we computed FTMap CSs for all unbound structures in PeptiDB2.
+* predictions are ranked by their percentage of total contacts between
+  probes and receptor.
 * 
