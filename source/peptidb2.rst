@@ -79,9 +79,11 @@ PeptiDB2 summary table
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table::
-    :url: https://docs.google.com/spreadsheet/pub?key=0ApXQ1x_sHoGrdFYwdEJ6aTFZckc3cHlzZEVzV01jUWc&single=true&gid=2&range=A1%3AF100&output=csv
+    :url: https://docs.google.com/spreadsheet/pub?key=0ApXQ1x_sHoGrdFYwdEJ6aTFZckc3cHlzZEVzV01jUWc&single=true&gid=2&range=A1%3AF10&output=csv
     :header-rows: 1
     :widths: 2 1 1 2 1 2
+
+.. csv table above only displays 10 first rows of the source table.
 
 
 Crystal contacts in PePIs
