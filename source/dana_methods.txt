@@ -1,0 +1,229 @@
+Methods
+
+1 Data sets
+
+1.1 PeptiDB, bound and unbound
+
+We have used PeptiDB, a non-redundant dataset of high-resolution structures of peptide-protein complexes described in (ref: peptiDB), which includes 103 peptide-protein complexes (termed 'bound set'). In 3 of these complexes there are 2 peptides in complex with the target protein and we used both peptides in our study. Additionally, we have the free monomer structure for 67 of the bound proteins (termed 'unbound set').
+
+It has been previously shown that similar to protein interactions, peptide binding is mediated by "hotspot" residues. The aim of our study is to define the unique characteristics of these "hotspot" residues and use them to identify a binding core by discriminating peptide-binding from non-peptide-binding residues. We do this by using an SVM classifier to distinguish binder residues from non-binders (see Methods:SVM below).
+
+1.2 Validation set (Assaf)
+
+Our procedure for locating a binding core (see Methods:SVM below) was tested on this validation set:...  
+
+1.3 Data resources
+
+We looked at a collection of sources in order to define energetic terms relevant for binding of small molecules on the protein surface. Each of the data sources is used in one of two ways: it either (1) characterizes a surface residue in a way that is relevant for it's potential to bind a peptide; or (2) it attempts to locate hotspot residues in the binding core and use them to characterize the surrounding binding residues. 
+
+We evaluated the results predicted by FTMap (ref: FTMap), a server for computational solvent mapping. We found that some of the most significantly predicted binding “hotspots” overlap to a certain degree with one or more of the binding peptide's residues. We use these predictions to define a potential binding core surrounding the solvent attractive cores  (see Methods:SVM:Parameters:FTMap). We further considered the fact that evolutionary distance between proteins may lead to similarities in binding interfaces. We therefore incorporated conservation data from the ConSurf algorithm sequence (ref: Consurf) and structure similarities between proteins with known functions. In evaluating more commonly used chemical characteristics of the binding amino acids (polarity and hydrogen bonding potential) we found that these too provide us with certain indications as to the correct peptide binding amino acid residues on the protein partner. Additionally we looked at other geometry-based algorithms for the identification of pockets and cavities on a protein surfaces (CASTp (ref: CastP)). 
+
+2 SVM
+
+We incorporated the data from the different sources to train an SVM (refs: Vapnik 1995, 1998) classifier to distinguish peptide binding residues from residues that are located farther from the binding core. Given a free monomer structure, the classifier predicts whether each residue is located near the binding core (a binder residue) or away from the core (a non-binder residue). Later, we cluster the binder residues into densely packed cores and provide a prediction on the core which is most likely to bind a peptide (see Methods:Clustering).
+
+2.1 Surface accessible residues
+
+Previous work shows that peptide do not tend to induce conformational change on their partner during binding (ref: peptiDB), thus we expect that the binding interface will mainly be populated by residues that are surface accesible in the free monomer. Therefore, we perform our measurements and classification only on surface accessible residues.
+
+We measure surface accessibility using the freely available Naccess program by S. Hubbard and J. Thornton (ref: hubbard1993naccess), which uses the Lee & Richards method (ref: Lee and Richards 1971). We consider the relative accessibility over all the atoms of a residue. A residue is considered to be surface accessible if the relative accessibility over all of its atoms is greater than 30.0 %.
+
+2.2 Training and Testing (assaf - verify numbers)
+
+%%% Assaf - make sure numbers are right for your data, as I trained on bound and tested on unbound %%%%
+%%% for training set, remember not to include the residues classified as '0' %%%%%
+
+Our goal is to predict peptide-binding cores on free monomer proteins. Thus, we train our classifier on the amino-acid residues from the set of 67 unbound protein structures in our dataset ('unbound set'). The training data contains 5561 residues: 784 positive and 4777 negative examples. We consider positive residues (binders) as the ones that are within 4.0 A from any peptide atom. 
+
+We tested our classifier on two test sets:
+
+2.2.1 Bound test set (assaf - verify numbers)
+
+As an initial test, we tested our classifier on the residues of the 103 proteins from the 'bound set'. These include 6507 residues (964 positive and 5543 negative examples). 
+
+2.2.2 Validation set (assaf)
+
+It has been shown that for peptide-binding proteins, in many cases, the backbone and residue confirmations for the bound and unbound monomers are very similar, and the majority of the change takes place in the peptide structure (ref: peptiDB). Under this assumption, it makes sense to provide an additional test set to our classification method. Since differences between the bound and unbound sets are negligible, the success rate on the bound test set should be close to the training error.
+
+more details by assaf on the validation set...
+
+2.3 Implementation and Parameters
+
+We used the freely available SVMlight implementation by Thorsten Joachims from http://svmlight.joachims.org/ (ref: SVMlight). We used a linear kernel with features normalized to the range [0,1]. 
+
+For every protein in our data, the interface area between the peptide and the protein is usually much smaller than the overall protein's surface area. This leads to a much greater number of negative example residues than positive ones in any given protein and also overall in our data. Since SVM classifiers are normally used in cases where the number of positive and negative examples is more balanced, this created a bias in our classification towards negative predictions. We used the standard method for resolving unbalanced data sets (ref: Morik 1999). We specified a cost-factor, by which training errors on positive examples outweight errors on negative examples, in a way that would balance the training data. In our case the cost-factor was 12. We used the same cost-factor for training and testing.
+
+2.4 Features
+
+We used a total of 6 features associated with the data sources described in (link to 1.3). Each feature is in the range [0,1].
+
+2.4.1 Solvent mapping features
+
+FTMap is a server for computational solvent mapping, trained on unbound monomer proteins (ref: FTMap). For a given input protein structure, the algorithm returns a set of up to 10 consensus sites (CSs) consisting of one or more low-energy probe clusters indicating an attraction site for organic solvents. We found that one or more low-energy are likely to overlap with the peptide binding site for a protein. We calculate two features associated with the location, number and size of these CSs. 
+
+2.4.1.1 Feature: Normalized CS rank (feature_norm_CS_rank)
+
+The CSs returned by the FTMap algorithm are ranked according to their energy (low energy CSs have lower rank). Given the consensus site CS, we define:
+	ftmap_rank(CS) = {rank of CS as returned by the FTMap algorithm}
+	
+We next define our own ranking of the CSs based on their initial rank and their size (the number of solvents in the clusters of this CS).
+
+Define:
+
+	ftmap_size(CS) = {the joint number of solvents in all the clusters of the CS as returned by the FTMap algorithm}
+
+	svm_ftmap_rank(CS) = 	{	ftmap_rank(CS) 		if ftmap_rank(CS) <= 4
+								5					else					}
+								
+	svm_ftmap_size(CS) = 	{ 	1					if ftmap_size(CS) <= 5
+								2					if ftmap_size(CS) <= 10
+								3					if ftmap_size(CS) <= 15
+								4					else					}
+								
+	svm_ftmap_final_rank(CS) = svm_ftmap_rank(CS) / svm_ftmap_size(CS)
+	
+Note that a low svm_ftmap_final_rank indicates a CS with a lower rank number (lower energy) or larger size. This means that a low scoring svm_ftmap_final_rank is favorable to a higher one. This score is normalized to the range [0,1] to give svm_ftmap_normalized_final_rank.
+
+Finally, for a residue, R, we define the feature:
+	feature_norm_CS_rank(R) = { min svm_ftmap_normalized_final_rank(CS) over the CS within 4 A of R }
+	
+This feature means that for a residue R, if we find a low energy, large cluster in a vicinity of 4 A from the residue, it has higher probability of being close to the peptide binding site.
+
+2.4.1.2 Feature: Number of close CSs (feature_num_close_CS)
+
+We would like to distinguish residues that are the vicinity of several CSs. We do this by defining:
+	num_close_CS(R) = { the number of CSs within 4.0 A of the residue, R }
+	
+	svm_num_CS(R) = { 	num_close_CS(R) 		if num_close_CS(R) <= 5
+						5						else					}
+
+Finally, we normalize this to the range [0,1] and get:
+	feature_num_close_CS(R) = { svm_num_CS(R) normalized to the range [0,1] }
+	
+2.4.2 Conservation features
+
+It has been found that integrating evolutionary sequence conservation estimates with other surface structure properties leads to successful location of small ligand binding sites (ref: ConCavity). Under our assumption that the peptide binding site overlaps with low energy ligand binding "hotspots" we add this data to our classifier. We use the conservation values of residues on the protein structure as given by the ConSurf server (ref: consurf server).
+
+2.4.2.1 Feature: Relative conservation per residue (feature_relative_conservation)
+
+For a residue R we define:
+	consurf_conservation(R) = { conservation value of R according to ConSurf }
+
+For a protein P we define:
+	avg_conservation(P) = { average conservation value of the surface residues of P }
+
+Surface residues are defined in Methods:SVM:SurfaceResidues.
+
+Now, the conservation of a residue relative to the average conservation of a protein's surface is:
+	svm_conservation(R) = consurf_conservation(R) / avg_conservation(P)
+	
+Finally:
+	feature_relative_conservation(R) = 
+			{ 	svm_conservation(R)		if svm_conservation(R) <= 1
+				1						else						}
+
+2.4.3 Surface accesible pockets features
+
+It has been shown that peptides tend to bind in the largest pockets available on the protein surface (ref: peptiDB). Therefor we characterize residues according to their proximity to a surface pocket. We also include information on the size of that pocket preferring larger pockets to smaller ones. 
+
+2.4.3.1 Feature: Residue pocket rank (feature_pocket_rank)
+
+CASTp provides identification and measurements of surface accessible pockets, including volume, surface area, and protein atoms that make up the pocket.
+
+For a surface accessible pocket, POC, we define the ranks of the pockets so that the largest pocket is ranked 1, and so on. Interior cavities are excluded from the ranking:
+	castp_pocket_rank(POC) = { rank of the pocket POC as given by castp }
+	
+For a residue, R:
+	svm_pocket_rank(R) = {	
+		castp_pocket_rank(POC) 	if R lies in a pocket, POC, and castp_pocket_rank(POC) <= 6 
+	  	6							if R lies in a pocket, POC, and castp_pocket_rank(POC) > 6
+	  	7 						if R does not lie in any pocket	}
+
+The pocket rank feature is defined as:
+	feature_pocket_rank(R) = { svm_pocket_rank(R) normalized to the range [0,1] }
+
+A lower value of feature_pocket_rank means that the residue, R, lies in a bigger pocket and a lower value indicates a smaller pocket or no pocket in proximity to R.
+
+2.4.4 Amino acid properties features
+
+We evaluate additional commonly used chemical characteristics of the binding amino acids: polarity and hydrogen bonding potential.
+
+2.4.4.1 Feature: Amino-acid polarity (feature_aa_polarity)
+
+For a residue, R, feature_aa_polarity(R) equals 1 if R is a polar residue:
+	feature_aa_polarity(R) = 
+		{ 1		if R is a polar amino-acid (one of: ARG, ASN, ASP, CYS, GLN, GLU, HIS, LYS, SER, THR, TYR)
+		  0		else }
+
+2.4.4.2 Feature: Amino-acid hydrogen bonding potential (feature_aa_hydrogen)
+
+The analysis of the peptiDB (ref: peptiDB) dataset has shown that peptide-protein interfaces contain a significant amount of hydrogen bonds compared to protein-protein interfaces. We therefore account for the hydrogen bonding potential of the surface accessible residues.
+
+For a residue, R, feature_aa_hydrogen(R) equals 1 if R has the ability to create hydrogen bonds:
+	feature_aa_hydrogen(R) = 
+		{ 1		if R is a polar amino-acid (one of: ARG, ASN, ASP, CYS, GLN, GLU, HIS, LYS, PRO, SER, THR, TRP, TYR)
+		  0		else }
+
+
+refs
+
+svm
+
+Vapnik, 1995 V. Vapnik, The Nature of Statistical Learning Theory, Springer, New York (1995).
+
+Vapnik, 1998 V. Vapnik, Statistical Learning Theory, Wiley, New York (1998).
+
+
+svm light
+
+T. Joachims, Making large-Scale SVM Learning Practical. Advances in Kernel Methods - Support Vector Learning, B. Schölkopf and C. Burges and A. Smola (ed.), MIT-Press, 1999. 
+
+K. Morik, P. Brockhausen, and T. Joachims, Combining statistical learning with a knowledge-based approach - A case study in intensive care monitoring. Proc. 16th Int'l Conf. on Machine Learning (ICML-99), 1999. 
+
+ftmap
+
+Brenke R, Kozakov D, Chuang G-Y, Beglov D, Mattos C, and Vajda S. Fragment-based identification of druggable "hot spots" of proteins using Fourier domain correlation Bioinformatics.
+
+concavity
+
+Capra JA, Laskowski RA, Thornton JM, Singh M, Funkhouser TA. Predicting protein ligand binding sites by combining evolutionary sequence conservation and 3D structure. PLoS Comput Biol. 2009 Dec;5(12):e1000585. Epub 2009 Dec 4.
+
+consurf
+
+Ashkenazy H., Erez E., Martz E., Pupko T. and Ben-Tal N. 2010 
+ConSurf 2010: calculating evolutionary conservation in sequence and structure of proteins and nucleic acids.
+Nucl. Acids Res. 2010; DOI: 10.1093/nar/gkq399; PMID: 20478830
+
+Landau M., Mayrose I., Rosenberg Y., Glaser F., Martz E., Pupko T. and Ben-Tal N. 2005. ConSurf 2005: the projection of evolutionary conservation scores of residues on protein structures. Nucl. Acids Res. 33:W299-W302. 
+
+Glaser F., Pupko T., Paz I., Bell R.E., Bechor D., Martz E. and Ben-Tal N. 2003. ConSurf: Identification of Functional Regions in Proteins by Surface-Mapping of Phylogenetic Information. Bioinformatics 19:163-164.
+
+castp
+
+Binkowski, T. A.; Naghibzadeh, S.; Liang, J. CASTp: Computed Atlas of Surface Topography of proteins Nucleic Acids Res. 2003, 31, 3352– 3355
+
+
+Naccess
+
+@article{lee1971interpretation,
+  title={{The interpretation of protein structures: estimation of static accessibility}},
+  author={Lee, B. and Richards, F.M.},
+  journal={Journal of Molecular Biology},
+  volume={55},
+  number={3},
+  pages={379--400},
+  issn={0022-2836},
+  year={1971},
+  publisher={Elsevier}
+}
+
+@article{hubbard1993naccess,
+  title={{NACCESS computer program}},
+  author={Hubbard, SJ and Thornton, JM},
+  journal={Department of Biochemistry and Molecular Biology, University College London},
+  volume={2},
+  number={9},
+  year={1993}
+}
+
+
