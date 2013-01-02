@@ -130,10 +130,12 @@ signal in the peptide space (hit CSs usually overlap with peptide
 side-chains) to one in the receptor space (surface residues in
 proximity to a CS).
 
+.. figure:: _images/1awr_ftmap_ppdb.png
+    :width: 60%
+    :align: center
 
-.. note::
-
-    add figure demonstrating FTMap's identification of hot spot sites.
+    The interface between Cyclophilin A and the HAGPIA peptide from HIV1
+    capsid protein. The top-ranked FTMap consensus site overlaps PRO4.
 
 -----------------------
 
