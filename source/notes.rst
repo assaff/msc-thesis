@@ -95,6 +95,13 @@ In other words, when a receptor residue is in proximity to an
 important CS (large, highly scored), it stands a high chance of being
 a binding residue. 
 
+.. figure:: _images/top1_classifiers.png
+    :align: center
+    :width: 100%
+    
+    performance of different classifiers trained on PeptiDB, in terms
+    of recall (blue), precision (orange) and F1-score (yellow).
+
 Visual inspection of several predictions showed that in many cases
 where that classifier failed to find a hit within the top 3 results,
 FTMap did find at least one of the hot-spot binding sites, but ranked
