@@ -119,10 +119,16 @@ Others are involved in hydrogen bonding, while other still provide
 specificity by repelling certain residues in peptides that should not
 bind that site.
 It stands to reason that each of these types emits a different signal
-in terms of our data sources, thereby 
+in terms of our data sources, making the task of detecting all of them
+more difficult. 
+This led us to shift the focus of our study; rather than
+characterizing the whole binding interface, we decided to focus on
+hot-spot residues and their socket counterparts.
 
-This led us to shift the focus of our study; rather than looking for
-the 
+This shift also eliminates the additional complexity of translating a
+signal in the peptide space (hit CSs usually overlap with peptide
+side-chains) to one in the receptor space (surface residues in
+proximity to a CS).
 
 
 .. note::
