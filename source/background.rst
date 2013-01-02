@@ -30,7 +30,7 @@ cell surface.
 Structural characterization of PePIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. hint::
+.. note::
     What do we already know about how PePIs behave?
     How are they different from other interactions?
     Reader should know about the results of PeptiDB study, especially
@@ -65,6 +65,42 @@ methods. The analysis suggests that peptide-protein interactions are:
 
     * linear peptides: **something?**
     * helical peptides: **anything?**
+
+Preliminary SVM study 
+-----------------------------
+
+The findings in the peptidb paper pointed to the unique features of
+peptide-protein interactions. 
+These features are encoded in the receptor structure, like pockets,
+hydrogen bonding side-chains, surface accessibility, minimal
+conformational change.
+
+In a follow up study, we looked into the feasibility of designing a
+Support Vector Machine as a predictor of peptide binding sites. We
+looked at three qualitatively-different descriptors of a receptor
+residue as features:
+
+1. **Surface geometry**: we analyzed the receptor structure with
+   CASTp [castp2009]_, which calculates
+   pockets near the receptor surface. We then scored each residue
+   based on its nearest pocket (size of pocket, proximity to pocket).
+2. **Sequence conservation**: we used the ConSurf database [consurf]_
+   to acquire conservation scores for each residue in the receptor.
+3. **Computational fragment mapping**: we used the FTMap protocol
+   [ftmap]_ to simulate fragment binding to the receptor surface. 
+
+Of all the features we examined, the most informative was by-far
+FTMap's cluster score. It had a high correlation to residues actually
+being binding residues. However, a SVM over receptor residues seemed
+to blur the signal from this descriptor. This observation led us to
+change our approach to the problem: rather than score residues in the
+receptor, based on their proximity to probes in space, we elected to
+identify those areas in space directly, and fit the peptide onto them
+
+* Contrary to the case with PPIs, peptides naturally don't expose a
+  large interaction surface. They instead depend on a few amino-acid
+  residues who contribute most of the binding energy.
+* These hot spots are usually **BLABLABLA**.
 
 Computational solvent mapping
 ------------------------------
@@ -136,35 +172,6 @@ Hot spot residues in PPIs
     different contexts. (see Zerbe et al. 2012)
 
 
-Preliminary SVM study 
------------------------------
-
-In a follow up study, we looked into the feasibility of designing a
-Support Vector Machine as a predictor of peptide binding sites. We
-looked at three qualitatively-different descriptors of a receptor
-residue as features:
-
-1. **Surface geometry**: we analyzed the receptor structure with
-   CASTp [castp2009]_, which calculates
-   pockets near the receptor surface. We then scored each residue
-   based on its nearest pocket (size of pocket, proximity to pocket).
-2. **Sequence conservation**: we used the ConSurf database [consurf]_
-   to acquire conservation scores for each residue in the receptor.
-3. **Computational fragment mapping**: we used the FTMap protocol
-   [ftmap]_ to simulate fragment binding to the receptor surface. 
-
-Of all the features we examined, the most informative was by-far
-FTMap's cluster score. It had a high correlation to residues actually
-being binding residues. However, a SVM over receptor residues seemed
-to blur the signal from this descriptor. This observation led us to
-change our approach to the problem: rather than score residues in the
-receptor, based on their proximity to probes in space, we elected to
-identify those areas in space directly, and fit the peptide onto them
-
-* Contrary to the case with PPIs, peptides naturally don't expose a
-  large interaction surface. They instead depend on a few amino-acid
-  residues who contribute most of the binding energy.
-* These hot spots are usually **BLABLABLA**.
 
 
 Rosetta FlexPepDock
