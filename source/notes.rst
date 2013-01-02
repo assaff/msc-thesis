@@ -58,7 +58,8 @@ classifier over a subset of output clusters. For instance, "top-3
 recall" means the average of binding site recall rates, calculated
 over the 3 top-ranked clusters.
 
-.. todo::
+.. note::
+
     * how are clusters ranked?
 
 Results
@@ -74,7 +75,8 @@ We experimented with different parameters of the SVM model, including:
 * Clustering parameters (see ``cluster_residues.py`` in ``peptalk``
   project).
 
-.. todo::
+.. note::
+
     What can we say about our classification?
     
 -----------------------
@@ -123,7 +125,8 @@ This led us to shift the focus of our study; rather than looking for
 the 
 
 
-.. todo::
+.. note::
+
     add figure demonstrating FTMap's identification of hot spot sites.
 
 -----------------------
