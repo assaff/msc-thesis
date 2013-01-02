@@ -46,6 +46,18 @@ We experimented with different parameters of the SVM model, including:
     
 -----------------------
 
+Of all the features we examined, the most informative was by-far
+FTMap's cluster score. It had a high correlation to residues actually
+being binding residues. However, a SVM over receptor residues seemed
+to blur the signal from this descriptor. This observation led us to
+change our approach to the problem: rather than score residues in the
+receptor, based on their proximity to probes in space, we elected to
+identify those areas in space directly, and fit the peptide onto them
+
+Contrary to the case with PPIs, peptides naturally don't expose a
+large interaction surface. They instead depend on a few amino-acid
+residues who contribute most of the binding energy.
+
 The data show that the classifiers which incorporate all data sources
 (e.g. ``classifier1_full``) outperform those that specialize in one
 aspect of the interaction (e.g. ``classifier3_ftmap``), in terms of

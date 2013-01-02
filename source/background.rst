@@ -2,7 +2,7 @@ Background and Related Work
 ===========================
 
 
-Peptide-protein interactions
+Structural hallmarks of peptide-protein interactions
 ------------------------------------------------------
 
 .. hint::
@@ -26,6 +26,16 @@ interact with cleaved antigen fragments and display them onto the
 cell surface.
 
 **[Therapeutic peptides: relevant?]**
+
+Hot spot residues in PPIs
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. hint::
+    The two definitions of hot spot residues (energetic, MSCS).
+    How they coincide in PPIs.
+    Difference between the two definitions, and the usefulness in
+    different contexts. (see Zerbe et al. 2012)
+
 
 Structural characterization of PePIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,6 +85,12 @@ These features are encoded in the receptor structure, like pockets,
 hydrogen bonding side-chains, surface accessibility, minimal
 conformational change.
 
+Support vector machines as a classification model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Definitions of residue features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 In a follow up study, we looked into the feasibility of designing a
 Support Vector Machine as a predictor of peptide binding sites. We
 looked at three qualitatively-different descriptors of a receptor
@@ -88,19 +104,6 @@ residue as features:
    to acquire conservation scores for each residue in the receptor.
 3. **Computational fragment mapping**: we used the FTMap protocol
    [ftmap]_ to simulate fragment binding to the receptor surface. 
-
-Of all the features we examined, the most informative was by-far
-FTMap's cluster score. It had a high correlation to residues actually
-being binding residues. However, a SVM over receptor residues seemed
-to blur the signal from this descriptor. This observation led us to
-change our approach to the problem: rather than score residues in the
-receptor, based on their proximity to probes in space, we elected to
-identify those areas in space directly, and fit the peptide onto them
-
-* Contrary to the case with PPIs, peptides naturally don't expose a
-  large interaction surface. They instead depend on a few amino-acid
-  residues who contribute most of the binding energy.
-* These hot spots are usually **BLABLABLA**.
 
 Computational solvent mapping
 ------------------------------
@@ -161,16 +164,6 @@ included in each CS).
     * FTMap successfully identifies PPI hot spots.
     * FTMap allows for fast, large-scale analysis of protein surfaces
       from the hot-spot point of view.
-
-Hot spot residues in PPIs
---------------------------
-
-.. hint::
-    The two definitions of hot spot residues (energetic, MSCS).
-    How they coincide in PPIs.
-    Difference between the two definitions, and the usefulness in
-    different contexts. (see Zerbe et al. 2012)
-
 
 
 
