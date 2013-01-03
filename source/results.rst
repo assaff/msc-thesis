@@ -130,6 +130,33 @@ interactions (see Table 1).
 .. Structures are available as bound-unbound pairs, where the bound
 .. complex is superimposed onto the unbound receptor. 
 
+During curation of the PeptiDB2 data set, each of the interactions was
+manually inspected. We noticed several trends in the structural data
+that are interesting, and may underlie inconsistencies or shortcomings
+of automated binding site prediction methods.
+
+The implications of crystal contacts at the binding site
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One of the standard methods we applied to investigate crystal contacts
+in a PePI was to compare symmetry mates of the unbound structure
+(within 5A) with the peptide itself.
+
+Several interactions exhibited symmetry mates of the free receptor
+crystal structure closely overlapping with the peptide in the complex
+structure.
+
+.. figure:: _images/1n7f-crystal-contacts.png
+    :align: center
+    :width: 75%
+
+    1N7E crystal contact, with high overlap with the peptide.
+
+In other interactions, we noticed symmetry mates of the bound
+receptor possibly stabilizing the peptide in the interface.
+
+.. note:: 
+
 .. raw:: latex
     \usepackage{lscape}
     \begin{landscape}
