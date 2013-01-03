@@ -46,17 +46,12 @@ We experimented with different parameters of the SVM model, including:
     
 -----------------------
 
-Of all the features we examined, the most informative was by-far
-FTMap's cluster score. It had a high correlation to residues actually
-being binding residues. However, a SVM over receptor residues seemed
-to blur the signal from this descriptor. This observation led us to
-change our approach to the problem: rather than score residues in the
-receptor, based on their proximity to probes in space, we elected to
-identify those areas in space directly, and fit the peptide onto them
-
-Contrary to the case with PPIs, peptides naturally don't expose a
-large interaction surface. They instead depend on a few amino-acid
-residues who contribute most of the binding energy.
+.. figure:: _images/top1_classifiers.png
+    :align: center
+    :width: 100%
+    
+    performance of different classifiers trained on PeptiDB, in terms
+    of recall (blue), precision (orange) and F1-score (yellow).
 
 The data show that the classifiers which incorporate all data sources
 (e.g. ``classifier1_full``) outperform those that specialize in one
@@ -72,13 +67,6 @@ In other words, when a receptor residue is in proximity to an
 important CS (large, highly scored), it stands a high chance of being
 a binding residue. 
 
-.. figure:: _images/top1_classifiers.png
-    :align: center
-    :width: 100%
-    
-    performance of different classifiers trained on PeptiDB, in terms
-    of recall (blue), precision (orange) and F1-score (yellow).
-
 Visual inspection of several predictions showed that in many cases
 where that classifier failed to find a hit within the top 3 results,
 FTMap did find at least one of the hot-spot binding sites, but ranked
@@ -93,6 +81,13 @@ protein surface.
 In this experiment, we were looking for the whole interface core, not
 just the hot spots. That approach, as we realized, was adding noise to
 a clear signal we got from FTMap.
+
+.. figure:: _images/1awr_ftmap_ppdb.png
+    :width: 60%
+    :align: center
+
+    The interface between Cyclophilin A and the HAGPIA peptide from HIV1
+    capsid protein. The top-ranked FTMap consensus site overlaps PRO4.
 
 The interface core is comprised of residues with different chemical
 groups performing different roles in the interaction. 
@@ -114,12 +109,17 @@ signal in the peptide space (hit CSs usually overlap with peptide
 side-chains) to one in the receptor space (surface residues in
 proximity to a CS).
 
-.. figure:: _images/1awr_ftmap_ppdb.png
-    :width: 60%
-    :align: center
+Of all the features we examined, the most informative was by-far
+FTMap's cluster score. It had a high correlation to residues actually
+being binding residues. However, a SVM over receptor residues seemed
+to blur the signal from this descriptor. This observation led us to
+change our approach to the problem: rather than score residues in the
+receptor, based on their proximity to probes in space, we elected to
+identify those areas in space directly, and fit the peptide onto them
 
-    The interface between Cyclophilin A and the HAGPIA peptide from HIV1
-    capsid protein. The top-ranked FTMap consensus site overlaps PRO4.
+Contrary to the case with PPIs, peptides naturally don't expose a
+large interaction surface. They instead depend on a few amino-acid
+residues who contribute most of the binding energy.
 
 
 PeptiDB2: a high-quality set of peptide-protein interaction data
