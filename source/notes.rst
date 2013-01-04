@@ -57,9 +57,56 @@ Paragraph titles
 Background
 ~~~~~~~~~~~~
 
+Hallmarks of Peptide-Protein Interactions
+"""""""""""""""""""""""""""""""""""""""""""
+
 * protein protein interactions are central to cellular function
-* many PPIs are mediated by peptides
+
+* PPIs are realized by different types of interfaces, depending on the
+  function and evolutionary history of the interacting partners.
+  Some interfaces feature two globular proteins
+  each exposing a relatively large, flat surface as the binding
+  interface.
+
+* Another type of PPIs are characterized by a short, linear peptide
+   interacting with a patch on the other protein's
+  surface. **phrasing: convey that the peptide can be either part of a
+  globular protein or a free oligopeptide**.
+
 * peptides are sometimes free molecules
+
+* In the context of this work, a peptide is defined as a short (5-15
+  aa long) oligopeptide interacting with some globular protein.
+
+* *subsubsection: PePIs comprise a unique class of molecular
+  interactions*
+
+* The constraints imposed by the small interface directly affect the
+  nature of these interactions.
+    - PePIs are often transient and weak, making them very sensitive
+      to environmental changes
+    - 
+
+* these characteristics make for good signaling/switching.
+
+* Besides the purely-scientific interest in this special class of
+  molecular interaction, it is also a highly attractive subject for
+  engineering and biomedical research.
+
+  - The smaller, less-complex binding interface lends itself well to
+    easier manipulation.
+  - Drug design using small molecules is mostly about manipulation of
+    catalytic interactions, e.g. disrupting catalysis by a drug to
+    compete for an enzyme active site against a natural substrate.
+    Engineering peptide-mediated interactions opens up many cellular
+    interactions (signaling) as drug targets.
+  - Low antigenic determinant
+
+* *subsubsection:: structural hallmarks of PePIs*
+
+* Previous studies (PepX, PepSite) characterized PePIs in some ways,
+  but peptidb unraveled features that distinguish PePIs from other
+  interactions.
 * London et al. described the strategies that peptides take to
   bind their partners.
 * They specifically use hot spot residues as hooks who contribute much
@@ -68,6 +115,30 @@ Background
   ligands on one hand, and PPIs on the other.
 * Hot spot residues are highly enriched in hydrophobic residues
   [London2010].
+
+* *subsubsection: hot spots and their role in PePIs*
+
+* The importance of hot spot residues is well established
+
+* Hot spot residues are especially important in PePIs, simply due to
+  the transience of the interaction. Their relative part of the
+  interaction energy is notably higher than their PPI counterparts.
+
+* In this work we investigate the role of hot spots using
+  computational fragment mapping.
+
+Computational fragment mapping
+""""""""""""""""""""""""""""""""
+
+**[to be continued]**
+
+Methods
+~~~~~~~~
+
+
+Results
+~~~~~~~~
+
 * we revised peptidb for higher-quality structures, annotating
   certain properties about these interactions that deserve some
   specific attention (crystal contacts, biological assembly, sequence
@@ -90,10 +161,6 @@ Background
   peptides that bind the same receptor. Examples Menin-MLL-JUND,
   SH3, p53 [Petsalaki2008].
 
-Results
-~~~~~~~~
-
 * we computed FTMap CSs for all unbound structures in PeptiDB2.
 * predictions are ranked by their percentage of total contacts between
   probes and receptor.
-* 
