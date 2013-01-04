@@ -1,8 +1,24 @@
 Results
 =======
 
+.. note:: add outline paragraph (what do results include).
+
 Prediction of interfaces using a machine-learning approach
 --------------------------------------------------------------
+
+.. note::
+
+    refer back to methods
+    in methods section we described multiple protocols which can be
+    used to derive features that characterize the protein surface (FTMap, CASTp, ConSurf,
+    polarity, hbonding...)
+
+    Output data from these protocols feed into our SVM model
+    We use a support vector machine to integrate these features into a
+    classifier that is aimed to identify the peptide-binding residues.
+    
+    An underlying assumption in this part is that a peptide binding
+    site is defined by the surface residues in proximity to the peptide.
 
 For each of the data sources, we formulated variables to capture the
 information these sources disclose about a given residue.
@@ -30,6 +46,7 @@ over the 3 top-ranked clusters.
 
     * how are clusters ranked?
 
+Performance of SVM is dependent on xyz, therefore we 
 We examined multiple configurations of the SVM to optimized recall and
 precision on training sets, obtaining performance data for each (see
 figure comparing different classifiers we tried).
@@ -102,7 +119,7 @@ in terms of our data sources, making the task of detecting all of them
 more difficult. 
 This led us to shift the focus of our study; rather than
 characterizing the whole binding interface, we decided to focus on
-hot-spot residues and their socket counterparts.
+hot-spot residues and their immediate binding pocket.
 
 This shift also eliminates the additional complexity of translating a
 signal in the peptide space (hit CSs usually overlap with peptide
