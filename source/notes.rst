@@ -84,13 +84,72 @@ Hallmarks of Peptide-Protein Interactions
 * In this work we investigate the role of hot spots using
   computational fragment mapping.
 
-Computational fragment mapping
+Methods for hot-spot analysis
 """"""""""""""""""""""""""""""""
 
-**[to be continued]**
+- MSCS is an experimental method for locating hot spot sites on
+  protein surfaces.
+
+- MSCS works by soaking the protein in solvents and solving the
+  crystal structures.
+
+- it has been shown to be very valuable for hot-spot assessment
+
+- however, it is laborious and costly.
+
+- FTMap has been developed as a computational approximation of MSCS
+
+- FTMap works by comprehensive sampling of the conformation space
+  between ...
+
+- FTMap is extremely efficient by leveraging FFT correlations.
+
+- FTMap has successfully described hot spot sites in proteins (RNAse
+  I).
+
+Hot spot residues
+^^^^^^^^^^^^^^^^^^
+
+- Hot spots are usually defined by ddG (alanine scanning).
+
+- Zerbe 2012 discuss an alternative definition for hot spots, using
+  consensus clusters in fragment mapping experiments/calculations.
+
+- These definitions were shown to mostly correlate.
+
+- There are differences between them, though. FTMap might even be more
+  sensitive, since alanine scanning only detects interactions realized
+  by side-chains. Some hot spots may use backbone interactions.
+
+Support vector machines
+""""""""""""""""""""""""
+
+- Support vector machine is a supervised learning model for
+  classification problems.
+
+- It relies on the notion of a separating hyperplane.
+
+- Data is usually described by a set of descriptor, e.g. oranges and
+  apples may be described by their radius, color, texture et cetera.
+
+- In order to use a SVM, one must train the model using data vectors
+  about labeled samples. The model infers an optimal partition of the
+  feature space, such that new samples from the same distribution
+  are accurately classified.
+
+- Pros:
+    * simple to implement
+
+- Cons:
+    * susceptible to over-fitting
+    * human interpretation of the model is sometimes difficult
+
+- In the first part of this work, we present an exploratory attempt to
+  detect peptide-binding residues on a protein surface using a SVM.
 
 Methods
 ~~~~~~~~
+
 
 
 Results
