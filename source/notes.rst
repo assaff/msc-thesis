@@ -2,7 +2,6 @@
 Notes
 ==========================
 
-
 Outline
 -----------------
 
@@ -12,22 +11,22 @@ Background
 Hallmarks of Peptide-Protein Interactions
 """""""""""""""""""""""""""""""""""""""""""
 
-* protein protein interactions are central to cellular function
+- protein protein interactions are central to cellular function
 
-* PPIs are realized by different types of interfaces, depending on the
+- PPIs are realized by different types of interfaces, depending on the
   function and evolutionary history of the interacting partners.
   Some interfaces feature two globular proteins
   each exposing a relatively large, flat surface as the binding
   interface.
 
-* Another type of PPIs are characterized by a short, linear peptide
+- Another type of PPIs are characterized by a short, linear peptide
    interacting with a patch on the other protein's
   surface. **phrasing: convey that the peptide can be either part of a
   globular protein or a free oligopeptide**.
 
-* peptides are sometimes free molecules
+- peptides are sometimes free molecules
 
-* In the context of this work, a peptide is defined as a short (5-15
+- In the context of this work, a peptide is defined as a short (5-15
   aa long) oligopeptide interacting with some globular protein.
     - Defined as interactions between a globular domain and a linear
       polypeptide, whether as a flexible loop/tail or a free molecule.
@@ -35,18 +34,18 @@ Hallmarks of Peptide-Protein Interactions
       prominent interaction types. See also [SteinAloy2008] for a
       review.
 
-* *subsubsection: PePIs comprise a unique class of molecular
+- *subsubsection: PePIs comprise a unique class of molecular
   interactions*
 
-* The constraints imposed by the small interface directly affect the
+- The constraints imposed by the small interface directly affect the
   nature of these interactions.
     - PePIs are often transient and weak, making them very sensitive
       to environmental changes
     - 
 
-* these characteristics make for good signaling/switching.
+- these characteristics make for good signaling/switching.
 
-* Besides the purely-scientific interest in this special class of
+- Besides the purely-scientific interest in this special class of
   molecular interaction, it is also a highly attractive subject for
   engineering and biomedical research.
 
@@ -59,29 +58,37 @@ Hallmarks of Peptide-Protein Interactions
     interactions (signaling) as drug targets.
   - Low antigenic determinant
 
-* *subsubsection:: structural hallmarks of PePIs*
+- *subsubsection:: structural hallmarks of PePIs*
 
-* Previous studies (PepX, PepSite) characterized PePIs in some ways,
+- Previous studies (PepX, PepSite) characterized PePIs in some ways,
   but peptidb unraveled features that distinguish PePIs from other
   interactions.
-* London et al. described the strategies that peptides take to
+- London et al. described the strategies that peptides take to
   bind their partners.
-* They specifically use hot spot residues as hooks who contribute much
+- They specifically use hot spot residues as hooks who contribute much
   of the binding energy.
-* In their binding strategies, peptides resemble small-molecule
+- In their binding strategies, peptides resemble small-molecule
   ligands on one hand, and PPIs on the other.
-* Hot spot residues are highly enriched in hydrophobic residues
+- Hot spot residues are highly enriched in hydrophobic residues
   [London2010].
 
-* *subsubsection: hot spots and their role in PePIs*
+- detecting interface residues without any knowledge of the peptide or
+  its binding site is a formidable task. Peptides are quite diverse
+  in structure and mode-of-binding.
 
-* The importance of hot spot residues is well established
+- However, as London et al have posed, receptors are pre-arranged to
+  bind them, hence it is interesting to find the intrinsic properties
+  of the interface. There is a signal there, and we aim to find it.
 
-* Hot spot residues are especially important in PePIs, simply due to
+- *subsubsection: hot spots and their role in PePIs*
+
+- The importance of hot spot residues is well established
+
+- Hot spot residues are especially important in PePIs, simply due to
   the transience of the interaction. Their relative part of the
   interaction energy is notably higher than their PPI counterparts.
 
-* In this work we investigate the role of hot spots using
+- In this work we investigate the role of hot spots using
   computational fragment mapping.
 
 Methods for hot-spot analysis
@@ -155,30 +162,30 @@ Methods
 Results
 ~~~~~~~~
 
-* we revised peptidb for higher-quality structures, annotating
+- we revised peptidb for higher-quality structures, annotating
   certain properties about these interactions that deserve some
   specific attention (crystal contacts, biological assembly, sequence
   identity)
-* we used different tools that predict ligand binding as features for
+- we used different tools that predict ligand binding as features for
   a SVM to predict binding residues. It did not come to fruition.
-* To mimic hot-spot side-chains, we used computational fragment
+- To mimic hot-spot side-chains, we used computational fragment
   mapping.
-* FTMap soaks a protein structure in different solvents, simulates
+- FTMap soaks a protein structure in different solvents, simulates
   where they bind favorably, and clusters these results into consensus
   clusters.
-* it was shown that CSs are highly indicative of ligand binding
+- it was shown that CSs are highly indicative of ligand binding
   [FTSite]. It is currently the best-performing tool for ligand
   binding site prediction, outperforming all others (fpocket, ligsite,
   castp, etc.).
-* it was also shown that in PPIs, these CSs correlate very well with
+- it was also shown that in PPIs, these CSs correlate very well with
   hot-spot residues, with energy measured both computationally and
   experimentally.
-* The hot-spot based approach is further justified by multiplicity of
+- The hot-spot based approach is further justified by multiplicity of
   peptides that bind the same receptor. Examples Menin-MLL-JUND,
   SH3, p53 [Petsalaki2008].
 
-* we computed FTMap CSs for all unbound structures in PeptiDB2.
-* predictions are ranked by their percentage of total contacts between
+- we computed FTMap CSs for all unbound structures in PeptiDB2.
+- predictions are ranked by their percentage of total contacts between
   probes and receptor.
 
 Knowledge dump
