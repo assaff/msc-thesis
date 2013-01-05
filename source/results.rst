@@ -7,36 +7,41 @@ Results
 Prediction of interfaces using a machine-learning approach
 --------------------------------------------------------------
 
-.. note::
+In Methods, we described multiple protocols which can be
+used to derive features that characterize the protein surface (FTMap,
+CASTp, ConSurf, polarity, hbonding...).
+We use a support vector machine to integrate these features into a
+classifier that should identify the peptide-binding residues.
+Output data from these protocols feed into our SVM model, such that
+they inform the model about different characteristics of the residues
+in question.
 
-    refer back to methods
-    in methods section we described multiple protocols which can be
-    used to derive features that characterize the protein surface (FTMap, CASTp, ConSurf,
-    polarity, hbonding...)
+An underlying assumption in this part is that a peptide binding
+site is defined by the surface residues in proximity to the peptide in
+the complex structure.
+Our goal is to identify these residues in the receptor structure
+(whether bound or unbound), using these intrinsic properties, but
+without any knowledge of the peptide or where it binds.
 
-    Output data from these protocols feed into our SVM model
-    We use a support vector machine to integrate these features into a
-    classifier that is aimed to identify the peptide-binding residues.
-    
-    An underlying assumption in this part is that a peptide binding
-    site is defined by the surface residues in proximity to the peptide.
+.. note: Move to methods:
 
-For each of the data sources, we formulated variables to capture the
-information these sources disclose about a given residue.
-These variables were used as columns in the training table for the SVM
-software, in addition to binary labels (binder/non-binder).
-Discrete variables were assigned consecutive integer values.
-All variables then underwent normalization (for details, see Methods
-section).
+    For each of the data sources, we formulated variables to capture the
+    information these sources disclose about a given residue.
+    These variables were used as columns in the training table for the SVM
+    software, in addition to binary labels (binder/non-binder).
+    Discrete variables were assigned consecutive integer values.
+    All variables then underwent normalization (for details, see Methods
+    section).
 
-Given an input protein structure, such an SVM classifier outputs a
-list of its surface residues (solvent accessibility obtained from
-NAccess), each scored with the level of confidence that residue is a
-binding residue.
+Given an input protein structure, the SVM classifier we designed
+outputs a list of its surface residues (solvent accessibility obtained
+from NAccess), each scored with the level of confidence that residue
+is a binding residue.
 In order to produce meaningful results out of such a list, we applied
 an extra step of clustering these residues hierarchically.
-That step produces a ranked set of residue clusters, each a collection
-of presumably-binding surface residues as scored by the classifier.
+That step produces a ranked set of residue clusters, each a
+geometrically-dense collection of presumably-binding surface residues
+as scored by the classifier.
 
 For each input protein, we calculate precision and recall of the
 classifier over a subset of output clusters. For instance, "top-3
@@ -58,10 +63,6 @@ We experimented with different parameters of the SVM model, including:
 * Clustering parameters (see ``cluster_residues.py`` in ``peptalk``
   project).
 
-.. note::
-
-    What can we say about our classification?
-    
 -----------------------
 
 .. figure:: _images/top1_classifiers.png
@@ -70,6 +71,14 @@ We experimented with different parameters of the SVM model, including:
     
     performance of different classifiers trained on PeptiDB, in terms
     of recall (blue), precision (orange) and F1-score (yellow).
+
+.. figure:: _images/top5_classifiers.png
+    :align: center
+    :width: 100%
+
+    performance of the same classifiers, as measured over the top1
+    clusters in each classifiers.
+
 
 The data show that the classifiers which incorporate all data sources
 (e.g. ``classifier1_full``) outperform those that specialize in one
