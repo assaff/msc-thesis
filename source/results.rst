@@ -52,6 +52,8 @@ over the 3 top-ranked clusters.
 
     * how are clusters ranked?
 
+.. note:: define a classifier as SVM + clustering scheme
+
 Performance of SVM is dependent on xyz, therefore we 
 We examined multiple configurations of the SVM to optimized recall and
 precision on training sets, obtaining performance data for each (see
@@ -131,6 +133,11 @@ This led us to shift the focus of our study; rather than
 characterizing the whole binding interface, we decided to focus on
 hot-spot residues and their immediate binding pocket.
 
+**The pockets wher hot spots bind are affected by multiple residues at a
+time. This signal might not be evident in any individual residue, but
+rather as a compound chemical effect at that site.**
+
+
 This shift also eliminates the additional complexity of translating a
 signal in the peptide space (hit CSs usually overlap with peptide
 side-chains) to one in the receptor space (surface residues in
@@ -148,12 +155,65 @@ Contrary to the case with PPIs, peptides naturally don't expose a
 large interaction surface. They instead depend on a few amino-acid
 residues who contribute most of the binding energy.
 
+Upon visual inspection of the results (especially failures), we
+noticed problems in our data set, driving us to revise it with
+updated, higher-quality structures and structural context.
+
+.. note:: 
+    
+    insert examples of problematic structures in peptidb 1 in
+    terms of binding site prediction (low resolution, NMR structures,
+    low seqid).
+
 
 PeptiDB2: a high-quality set of peptide-protein interaction data
 ----------------------------------------------------------------
 
+We compiled a set of peptide-protein interactions, including
+experimental structures of the bound complex and the unbound receptor. 
+Curation started with the non-redundant set of 61 complexes described
+in [peptidb:2010]_, each interaction undergoing manual inspection.
+.. Several complexes from that set were manually refreshed when possible, or otherwise discarded.
+If an interaction had any of the following "symptoms", it was either
+fixed by replacing the structures representing it, or discarded:
+
+* Unbound structure is NMR *[1d4t, 1jd5, 2zjd, 2oei, 3d9t]*. In most
+  cases an X-ray structure was found as a substitute.
+* Low sequence id between bound/unbound *[2p0w, 1se0, 2d0n, 1qkz,
+  1jwg, 1hc9, 1ymt, 1t4f, 1ywo, 3cvp, 3d9t, 1dkz, 1tw6, 2jam]*. All
+  interactions currently have **at least 91%** sequence identity between bound
+  and unbound structures.
+* Low-resolution unbound structure *[2v8y, 1fm9, 2j6f, 1nvr, 2p54]*.
+  All structures in the data set are currently X-ray structures with
+  :math:`<3.0 \AA` resolution.
+* Better bound structure *[1sfi/2age, 2ak5/2df6, ]*
+* Ambiguity over the identity of the peptide
+
+Additionally, each entry was annotated with:
+
+* Biological context and function of protein
+* Biological unit and role of receptor in it (stable complex with
+  other proteins, homo-oligomer)
+* multiple peptides *[2vj0, 1lvm]*
+* Crystal contact, especially in the interface *[1tp5]*
+.. * domain decomposition of unbound (is relevant?)
+
+For each of the interactions in the data set, the bound complex was
+superimposed over the unbound receptor based on BLAST [BLAST]_
+sequence alignment between the corresponding receptor chains.
+Each of the receptors was additionally decomposed into individual
+domains based on CATH classification [CATH]_, to allow per-domain
+analysis of the peptide binding site.
+
 Curation resulted in **[NUMBER OF LINES IN TABLE 1]** high-quality
 interactions (see Table 1).
+
+.. note::
+
+    describe different features of peptidb2 (resolution, xray), and
+    the purpose they serve in context of either past failures or
+    future goals.
+
 .. Structures are available as bound-unbound pairs, where the bound
 .. complex is superimposed onto the unbound receptor. 
 
@@ -182,7 +242,7 @@ structure.
 In other interactions, we noticed symmetry mates of the bound
 receptor possibly stabilizing the peptide in the interface.
 
-.. note:: 
+.. note:: address differences between bound/unbound crystal contacts.
 
 .. raw:: latex
     \usepackage{lscape}
