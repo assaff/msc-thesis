@@ -80,13 +80,28 @@ methods. The analysis suggests that peptide-protein interactions are:
 Support vector machines 
 -----------------------------
 
-.. note::
-    
-    - what are SVMs?
-    - how are they useful?
-    - how do they work?
-    - pros and cons
+- Support vector machine is a supervised learning model for
+  classification problems.
 
+- It relies on the notion of a separating hyperplane.
+
+- Data is usually described by a set of descriptor, e.g. oranges and
+  apples may be described by their radius, color, texture et cetera.
+
+- In order to use a SVM, one must train the model using data vectors
+  about labeled samples. The model infers an optimal partition of the
+  feature space, such that new samples from the same distribution
+  are accurately classified.
+
+- Pros:
+    * simple to implement
+
+- Cons:
+    * susceptible to over-fitting
+    * human interpretation of the model is sometimes difficult
+
+- In the first part of this work, we present an exploratory attempt to
+  detect peptide-binding residues on a protein surface using a SVM.
 
 The findings in the peptidb paper pointed to the unique features of
 peptide-protein interactions. 
