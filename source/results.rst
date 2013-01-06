@@ -324,43 +324,39 @@ unbound receptor visibly overlapping with the peptide.
 This usually involves an extended terminus in the unbound receptor. We
 have yet to investigate the meaning of this phenomenon.
 
-Machine-learning analysis of binding site features
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-details about SVM analysis here.
-
-
-
-Features:
-
-1. Short peptides (5-15 aa)
-2. Non-redundant (seqid < 70%)
-3. 44 interactions, represented by high-quality X-ray structures (bound + unbound) with resolution < 2.5Å
-
-Other data sets: PeptiDB1 (n=103), PepX (n=505)
-
-Preliminary machine-learning analysis of receptor surface residues suggested hot-spots as a reliable indicator of proximity to binding site.
-
-PeptiMap: an accurate tool for identifying hot-spot binding sites
-[b]
-
-FT-Map2 performs a global search of the entire protein surface for regions that bind a number of small organic probe molecules. Probes are clustered together to form consensus sites (CS), which represent potential binding sites.
-
-The search is based on the very efficient fast Fourier transform (FFT) correlation approach which can sample billions of probe positions, and on a detailed energy expression, resulting in a very accurate identification of low-energy probe clusters.
-
-Hot-spots are key to understanding peptide-protein interactions
+PeptiMap: toward an accurate predictor of peptide binding sites
 ----------------------------------------------------------------
 
-The crucial role that hot spot residues play in protein-protein and
-peptide-protein interactions is a matter of consensus
-[ftmap_analysis]. 
+Are hot-spots enough to predict the entire binding site?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Once PeptiDB2 reached a suffienct measure of quality, we performed 
+computational fragment mapping on the unbound set of receptors.
+On the same input, we also ran PepSite2, an existing protocol for
+peptide binding site identification (see details in
+:ref:`Methods <methods-pepsite>`).
 
-PeptiMap: an accurate predictor of peptide binding sites
----------------------------------------------------------
+PepSite2 uses a completely different approach to represent and predict
+the peptide interface. It is a probabilistic model calibrated
+specifically for peptide interfaces, which makes use of PSSMs to
+capture individual preferences of peptide residues to certain
+environments. Unlike PeptiMap, prediction is highly dependent on the
+peptide sequence, and requires a peptide sequence as input, 3-10 amino
+acids long. In cases where peptidb2 contains peptides longer than 10 residues,
+PepSite2 was provided with a 10aa sub-sequence of the peptide,
+selected to minimize the average distance from any receptor atom.
 
-Motivation
-~~~~~~~~~~~
+For both prediction protocols, we consider two ways of defining a
+correct prediction: *top-1 hit* and *top-3 hit*, meaning there is a
+*hit* within the top 1 and top 3 sites respectively identified by the
+protocol in question.
+A predicted site is considered a *hit* when its center of mass is
+within :math:`4 \text{A}` of any ligand atom, as defined by the LigSiteSC
+criterion [ligsite]_. The ligand in this context is the peptide,
+translated and rotated to its correct binding site.
+
+.. note:: figure comparing performance of PepSite2 and FTMap
+
 
 Taken from conclusions of PeptiDB analysis of hot spots
 Justification of hot spot approach to binding site detection.
