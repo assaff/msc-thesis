@@ -272,6 +272,19 @@ structure.
 In other interactions, we noticed symmetry mates of the bound
 receptor possibly stabilizing the peptide in the interface.
 
+In some cases, crystal structures are mis-annotated with respect to
+biological assembly. For instance, one structure in PeptiDB is
+listed as a monomer, and the crystal structure includes only one
+chain. Applying symmetry operations reveals symmetry mates forming a
+radially-symmetric homotrimer. Indeed, other structures of the same
+protein are correctly classified as homotrimers.
+
+.. note:: requires support
+
+    In fact, in a recent study, Dunbrack et al. *[citation here]*
+    estimate 50% of all X-ray structures in the Protein Data Bank
+    include incorrect biological assembly remarks.
+
 .. note:: Crystal Contacts in X-ray structures
 
     The most prominent method for solving protein structures is X-ray
