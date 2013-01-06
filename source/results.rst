@@ -190,20 +190,22 @@ experimental structures of the bound complex and the unbound receptor.
 
 Curation started with the non-redundant set of 61 complexes described
 in [peptidb:2010]_, each interaction undergoing manual inspection.
-.. Several complexes from that set were manually refreshed when possible, or otherwise discarded.
-If an interaction had any of the following "symptoms", it was either
-fixed by replacing the structures representing it, or discarded:
 
-* Unbound structure is NMR *[1d4t, 1jd5, 2zjd, 2oei, 3d9t]*. In most
-  cases an X-ray structure was found as a substitute.
-* Low sequence id between bound/unbound *[2p0w, 1se0, 2d0n, 1qkz,
-  1jwg, 1hc9, 1ymt, 1t4f, 1ywo, 3cvp, 3d9t, 1dkz, 1tw6, 2jam]*. All
-  interactions currently have **at least 91%** sequence identity between bound
-  and unbound structures.
-* Low-resolution unbound structure *[2v8y, 1fm9, 2j6f, 1nvr, 2p54]*.
-  All structures in the data set are currently X-ray structures with
-  :math:`<3.0 \AA` resolution.
-* Better bound structure *[1sfi/2age, 2ak5/2df6, ]*
+..  curation details:
+    
+    Several complexes from that set were manually refreshed when possible, or otherwise discarded.
+    If an interaction had any of the following "symptoms", it was either
+    fixed by replacing the structures representing it, or discarded:
+    * Unbound structure is NMR *[1d4t, 1jd5, 2zjd, 2oei, 3d9t]*. In most
+      cases an X-ray structure was found as a substitute.
+    * Low sequence id between bound/unbound *[2p0w, 1se0, 2d0n, 1qkz,
+      1jwg, 1hc9, 1ymt, 1t4f, 1ywo, 3cvp, 3d9t, 1dkz, 1tw6, 2jam]*. All
+      interactions currently have **at least 91%** sequence identity between bound
+      and unbound structures.
+    * Low-resolution unbound structure *[2v8y, 1fm9, 2j6f, 1nvr, 2p54]*.
+      All structures in the data set are currently X-ray structures with
+      :math:`<3.0 \AA` resolution.
+    * Better bound structure *[1sfi/2age, 2ak5/2df6, ]*
 
 In order to isolate the effect of conformational change in the
 receptor, we require high sequence identity between bound and unbound
@@ -215,7 +217,9 @@ For the same reason, we require that unbound structures be
 precise X-ray structure (resolution :math:`<3.0 \text{Å}`).
 Overall, 13 interactions were discarded due to low quality of the
 unbound structure, and 9 were updated with more suitable structures.
-Additionally, two interactions were updated with new bound structures.
+Additionally, two interactions were updated with new bound structures,
+bringing the total count of samples to 48 interactions (see details in
+:ref:`table-peptidb`).
 
 Each entry was manually examined and annotated with information
 regarding its biological context and assembly, crystal contacts,
@@ -234,11 +238,6 @@ sequence alignment between the corresponding receptor chains.
 Each of the receptors was additionally decomposed into individual
 domains based on CATH classification [CATH]_, to allow per-domain
 analysis of the peptide binding site.
-
-The data set contains 48 interactions.
-
-Curation resulted in **[NUMBER OF LINES IN TABLE 1]** high-quality
-interactions (see Table 1).
 
 .. note::
 
@@ -303,9 +302,12 @@ protein are correctly classified as homotrimers.
 
 .. note:: address differences between bound/unbound crystal contacts.
 
-.. csv-table:: _tables/peptidb2_table1.csv
+.. _table-peptidb:
+
+.. csv-table:: PeptiDB2 table
+    :file: _tables/peptidb2_table1.csv
     :header-rows: 1
-        
+    
 
 Characterization of hot spot residues in PeptiDB2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
