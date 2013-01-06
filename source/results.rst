@@ -288,16 +288,9 @@ receptor possibly stabilizing the peptide in the interface.
 
 .. note:: address differences between bound/unbound crystal contacts.
 
-.. raw:: latex
-    \usepackage{lscape}
-    \begin{landscape}
-
-.. csv-table:: 
-    :file: _tables/peptidb2_table1.csv
+.. csv-table:: _tables/peptidb2_table1.csv
     :header-rows: 1
-
-.. raw:: latex
-    \end{landscape}
+        
 
 Characterization of hot spot residues in PeptiDB2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -313,7 +306,7 @@ PeptiDB2 summary table
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table::
-    :url: https://docs.google.com/spreadsheet/pub?key=0ApXQ1x_sHoGrdFYwdEJ6aTFZckc3cHlzZEVzV01jUWc&single=true&gid=2&range=A1%3AF100&output=csv
+    :url: https://docs.google.com/spreadsheet/pub?key=0ApXQ1x_sHoGrdFYwdEJ6aTFZckc3cHlzZEVzV01jUWc&single=true&gid=2&range=A1%3AF10&output=csv
     :header-rows: 1
     :widths: 2 1 1 2 1 2
 
