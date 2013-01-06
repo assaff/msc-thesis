@@ -235,6 +235,8 @@ Each of the receptors was additionally decomposed into individual
 domains based on CATH classification [CATH]_, to allow per-domain
 analysis of the peptide binding site.
 
+The data set contains 48 interactions.
+
 Curation resulted in **[NUMBER OF LINES IN TABLE 1]** high-quality
 interactions (see Table 1).
 
