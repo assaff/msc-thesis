@@ -65,8 +65,6 @@ We experimented with different parameters of the SVM model, including:
 * Clustering parameters (see ``cluster_residues.py`` in ``peptalk``
   project).
 
------------------------
-
 .. figure:: _images/top1_classifiers.png
     :align: center
     :width: 100%
@@ -81,6 +79,8 @@ We experimented with different parameters of the SVM model, including:
     performance of the same classifiers, as measured over the top1
     clusters in each classifiers.
 
+Insights from the SVM model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The data show that the classifiers which incorporate all data sources
 (e.g. ``classifier1_full``) outperform those that specialize in one
@@ -143,6 +143,18 @@ signal in the peptide space (hit CSs usually overlap with peptide
 side-chains) to one in the receptor space (surface residues in
 proximity to a CS).
 
+London et al. [peptidb]_ reported an interesting pattern in the
+geometries of the interfaces they studied. Peptides bind either in
+a large pocket on the receptor surface, or in a knobs-in-holes manner,
+i.e. where the interface is composed of a group of small sites each
+binding one chemical group in the peptide.
+
+.. note:: requires support in data and rephrasing
+
+    Overall, it is evident in the data that FTMap is more sensitive to
+    knobs-in-holes interfaces, while still maintaining comparable
+    performance in big pocket interfaces.
+
 Of all the features we examined, the most informative was by-far
 FTMap's cluster score. It had a high correlation to residues actually
 being binding residues. However, a SVM over receptor residues seemed
@@ -169,8 +181,13 @@ updated, higher-quality structures and structural context.
 PeptiDB2: a high-quality set of peptide-protein interaction data
 ----------------------------------------------------------------
 
+- In light of what described above, we revised our data set
+  in an effort to eliminate experimental artifacts and increase
+  overall quality of structures.
+
 We compiled a set of peptide-protein interactions, including
 experimental structures of the bound complex and the unbound receptor. 
+
 Curation started with the non-redundant set of 61 complexes described
 in [peptidb:2010]_, each interaction undergoing manual inspection.
 .. Several complexes from that set were manually refreshed when possible, or otherwise discarded.
@@ -187,9 +204,22 @@ fixed by replacing the structures representing it, or discarded:
   All structures in the data set are currently X-ray structures with
   :math:`<3.0 \AA` resolution.
 * Better bound structure *[1sfi/2age, 2ak5/2df6, ]*
-* Ambiguity over the identity of the peptide
 
-Additionally, each entry was annotated with:
+In order to isolate the effect of conformational change in the
+receptor, we require high sequence identity between bound and unbound
+receptor structures (:math:`>90 \%`). In 12 interactions in our original data set where
+sequence identity was low, no substitute was found to the original
+unbound structure, and they were cut out of the clean data set.
+
+For the same reason, we require that unbound structures be
+precise X-ray structure (resolution :math:`<3.0 \text{Å}`).
+Overall, 13 interactions were discarded due to low quality of the
+unbound structure, and 9 were updated with more suitable structures.
+Additionally, two interactions were updated with new bound structures.
+
+Each entry was manually examined and annotated with information
+regarding its biological context and assembly, crystal contacts,
+hot spot residues.
 
 * Biological context and function of protein
 * Biological unit and role of receptor in it (stable complex with
@@ -241,6 +271,20 @@ structure.
 
 In other interactions, we noticed symmetry mates of the bound
 receptor possibly stabilizing the peptide in the interface.
+
+.. note:: Crystal Contacts in X-ray structures
+
+    The most prominent method for solving protein structures is X-ray
+    crystallography. To apply it, a crystal is made from a highly
+    concentrated solution of the protein. In the crystal, individual
+    protein molecules are arranged in a lattice. The crystal is then
+    blasted with an X-ray beam, and an electron-density
+    map is obtained from the resulting diffraction pattern.
+    
+    Due to the high concentration in the solution, sometimes proteins
+    in the crystal bind each other. These interactions, which are
+    mostly presumed to be artifacts of the experiment, are called
+    *crystal contacts*,
 
 .. note:: address differences between bound/unbound crystal contacts.
 
