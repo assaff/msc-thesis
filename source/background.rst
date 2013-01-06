@@ -77,17 +77,22 @@ methods. The analysis suggests that peptide-protein interactions are:
     * linear peptides: **something?**
     * helical peptides: **anything?**
 
-Preliminary SVM study 
+Support vector machines 
 -----------------------------
+
+.. note::
+    
+    - what are SVMs?
+    - how are they useful?
+    - how do they work?
+    - pros and cons
+
 
 The findings in the peptidb paper pointed to the unique features of
 peptide-protein interactions. 
 These features are encoded in the receptor structure, like pockets,
 hydrogen bonding side-chains, surface accessibility, minimal
 conformational change.
-
-Support vector machines as a classification model
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Definitions of residue features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
