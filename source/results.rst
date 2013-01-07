@@ -389,7 +389,8 @@ sequence variation.
 
 Again, visually reviewing the results implicated one possible cause
 for multiple failed predictions: in receptors that included multiple
-domains, FTMap performed worse that it did on single-domain receptors.
+domains, FTMap performed much better when each of the domains was
+analyzed separately.
 That can result from many of the top-ranked probes being attracted to
 the domain-domain interface.
 
@@ -411,8 +412,22 @@ Among the 29 interactions analyzed, we found 5 such interactions where
 fragment mapping did better on individual domains than on the whole
 receptor.
 
-Taken from conclusions of PeptiDB analysis of hot spots
-Justification of hot spot approach to binding site detection.
+Based on these observations, we tested FTSite against PepSite2 on all
+interactions in peptidb2, and here are the results for top1 hits:
+
+.. csv-table::
+    :file: _tables/confusion_matrix_top1.csv
+    :header-rows: 1
+    :stub-columns: 1
+
+and top 3 hits:
+
+.. csv-table::
+    :file: _tables/confusion_matrix_top3.csv
+    :header-rows: 1
+    :stub-columns: 1
+
+**What conclusions can we draw from these data?**
 
 Computational fragment mapping is a reliable approximation of hot-spot analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
