@@ -429,6 +429,26 @@ and top 3 hits:
 
 **What conclusions can we draw from these data?**
 
+We evaluate the effectiveness of domain decomposition by comparing hit
+and miss numbers between the two approaches on the 38 interactions
+that actually have CATH domains defined:
+
+.. table::
+    
+    +-------------+-------------------+--------------------+
+    | FULL_RESULT | DOMAIN_DECOMP_HIT | DOMAIN_DECOMP_MISS |
+    +=============+===================+====================+
+    | HIT         | 20                | 1                  |
+    +-------------+-------------------+--------------------+
+    | MISS        | 4                 | 13                 |
+    +-------------+-------------------+--------------------+
+
+.. note:: The numbers don't add up to 48 here
+    
+    That's because in 10 interactions there is no other domain except
+    0.
+    
+
 Computational fragment mapping is a reliable approximation of hot-spot analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
