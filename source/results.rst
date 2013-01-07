@@ -372,8 +372,44 @@ within :math:`4 \text{A}` of any ligand atom, as defined by the LigSiteSC
 criterion [ligsite]_. The ligand in this context is the peptide,
 translated and rotated to its correct binding site.
 
+As a first evaluation of out method, we tested it on a subset of
+29 interactions from PeptiDB2, where the sequences of bound and
+unbound receptor are completely identical (100% sequence identity).
+The rationale was to eliminate conformational changes that stem from
+sequence variation.
+
+.. comment
+    In Dima's spreadsheet describing this result, he counts 30
+    interactions over which he performed analysis. That's because he
+    considered *1b9k* twice, one with each different peptide (2vj0
+    chains P and Q). These are indeed different interactions, but in
+    my peptidb2 table, there is only one of them, with the P peptide.
+
 .. note:: figure comparing performance of PepSite2 and FTMap
 
+Again, visually reviewing the results implicated one possible cause
+for multiple failed predictions: in receptors that included multiple
+domains, FTMap performed worse that it did on single-domain receptors.
+That can result from many of the top-ranked probes being attracted to
+the domain-domain interface.
+
+.. figure:: _images/ftsite-1b9kPQ-domains.png
+    :width: 100%
+
+    The alpha subunit of the endocytotic AP2 adaptor complex
+    is composed of two distinct domains.
+    Both domains interact with their respective partners via a
+    peptide-domain interface, and both interactions were observed
+    simultaniously in a crystal structure (PDB ID **2VJ0**). 
+    Fragment mapping of the entire chain (containing both domains)
+    completely misses, while mapping each domain separately finds at least
+    one hit for each domain within the 3 top predicted sites, where
+    domain-domain sites were masked, essentially blocking any CSs from
+    forming there.
+
+Among the 29 interactions analyzed, we found 5 such interactions where
+fragment mapping did better on individual domains than on the whole
+receptor.
 
 Taken from conclusions of PeptiDB analysis of hot spots
 Justification of hot spot approach to binding site detection.
