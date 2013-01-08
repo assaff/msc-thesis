@@ -3,22 +3,29 @@ Background and Related Work
 ===========================
 
 
-Structural hallmarks of peptide-protein interactions
+Hallmarks of peptide-protein interactions
 ------------------------------------------------------
-
-.. hint::
-    What are PePIs, and why are they interesting to study?
 
 Protein-protein interactions are involved in numerous cellular
 processes, from *something* to *something else*.
 
-Often, these interactions are mediated by short, linear segments in
-one partner, which assumes a defined structure only upon binding.
+These interactions take place at interfaces of various forms,
+depending on the function and structure of the parties involved.
+Many interfaces, especially in large, stable complexes, feature two
+globular proteins each exposing a relatively broad, flat surface as
+binding interface.
+
+Alternatively, these interactions are mediated by a short, linear
+peptide (whether as a free molecule, or a segment in one partner),
+interacting with a patch on the surface of another protein (i.e. a
+receptor).
+Often, the peptide is disordered in solution, yet assumes a defined
+structure upon binding.
 Since the rest of the protein doesn't contribute much to binding
 energy, these interactions are considered peptide-protein
-interactions, where the peptide is the crucial segment. Multiple
-studies have shown that these segments retain their capacity to
-interact with the receptor even when detached from the original
+interactions, where the peptide is the crucial segment.
+Multiple studies have shown that these segments retain their capacity
+to interact with the receptor even when detached from the original
 protein context.
 
 There are also other kinds of peptide-protein interactions, in which
@@ -26,16 +33,43 @@ the peptide is a free oligopeptide, e.g. MHC proteins
 interact with cleaved antigen fragments and display them onto the
 cell surface.
 
-**[Therapeutic peptides: relevant?]**
+- In the context of this work, a peptide is defined as a short (5-15
+  aa long) oligopeptide interacting with some globular protein.
+    - Defined as interactions between a globular domain and a linear
+      polypeptide, whether as a flexible loop/tail or a free molecule.
+      See examples in [Petsalaki2008] (review) and [Neduva2006] for
+      prominent interaction types. See also [SteinAloy2008] for a
+      review.
 
-Hot spot residues in PPIs
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+PePIs comprise a unique class of molecular interactions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. hint::
-    The two definitions of hot spot residues (energetic, MSCS).
-    How they coincide in PPIs.
-    Difference between the two definitions, and the usefulness in
-    different contexts. (see Zerbe et al. 2012)
+The constraints imposed by the small interface directly affect the
+nature of these interactions.
+- Since the interface is limited to a few residues, there is very little enthalpy to be gained to begin with. 
+  Therefore, PePIs are often transient and weak, making them very
+  responsive to changes in their environment.
+  This property is very appropriate for *signalling*, the primary
+  cellular purpose of these interactions.
+
+.. subsubsection: therapeutic peptides
+
+Besides the purely-scientific interest in this special class of
+molecular interaction, it is also a highly attractive subject for
+engineering and biomedical research.
+The smaller, less-complex binding interface lends itself well to
+manipulation, since the effect of mutation can be easily isolated and
+studied.
+Peptides also carry a low antigenic determinant. However, they also
+have low bioavailability. Nevertheless, therapeutic peptide research
+has been expanding rapidly in recent years, and there are already
+several successful designs in clinical trials.
+
+Drug design using small molecules is mostly about manipulation of
+catalytic interactions, e.g. disrupting catalysis by a drug to
+compete for an enzyme active site against a natural substrate.
+Engineering peptide-mediated interactions opens up many cellular
+interactions (signaling) as drug targets.
 
 
 Structural characterization of PePIs
@@ -59,8 +93,20 @@ methods. The analysis suggests that peptide-protein interactions are:
 * hydrogen bonds are enriched in interface, contributing a lot to
   binding energy.
 
-**ORA: add more detail about peptidb study.**
+.. note::
+    
+    add more content about peptidb study. Use blog for guidance.
 
+Hot spot residues in PPIs
+--------------------------
+
+.. hint::
+    - The role hot spots play in protein protein interactions.
+    - The added importance of hot spots in PePIs.
+    - The two definitions of hot spot residues (energetic, MSCS).
+    - How they coincide in PPIs.
+    - Difference between the two definitions, and the usefulness in
+      different contexts. (see Zerbe et al. 2012)
 
 .. commented
 
@@ -76,58 +122,6 @@ methods. The analysis suggests that peptide-protein interactions are:
 
     * linear peptides: **something?**
     * helical peptides: **anything?**
-
-Support vector machines 
------------------------------
-
-- Support vector machine is a supervised learning model for
-  classification problems.
-
-- It relies on the notion of a separating hyperplane.
-
-- Data is usually described by a set of descriptor, e.g. oranges and
-  apples may be described by their radius, color, texture et cetera.
-
-- In order to use a SVM, one must train the model using data vectors
-  about labeled samples. The model infers an optimal partition of the
-  feature space, such that new samples from the same distribution
-  are accurately classified.
-
-- Pros:
-    * simple to implement
-
-- Cons:
-    * susceptible to over-fitting
-    * human interpretation of the model is sometimes difficult
-
-- In the first part of this work, we present an exploratory attempt to
-  detect peptide-binding residues on a protein surface using a SVM.
-
-The findings in the peptidb paper pointed to the unique features of
-peptide-protein interactions. 
-These features are encoded in the receptor structure, like pockets,
-hydrogen bonding side-chains, surface accessibility, minimal
-conformational change.
-
-Definitions of residue features
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In a follow up study, we looked into the feasibility of designing a
-Support Vector Machine as a predictor of peptide binding sites. We
-looked at three qualitatively-different descriptors of a receptor
-residue as features:
-
-1. **Surface geometry**: we analyzed the receptor structure with
-   CASTp [castp2009]_, which calculates
-   pockets near the receptor surface. We then scored each residue
-   based on its nearest pocket (size of pocket, proximity to pocket).
-2. **Sequence conservation**: we used the ConSurf database [consurf]_
-   to acquire conservation scores for each residue in the receptor.
-3. **Computational fragment mapping**: we used the FTMap protocol
-   [ftmap]_ to simulate fragment binding to the receptor surface. 
-
-Computational solvent mapping
-------------------------------
 
 MSCS
 ~~~~~
@@ -186,6 +180,55 @@ included in each CS).
     * FTMap allows for fast, large-scale analysis of protein surfaces
       from the hot-spot point of view.
 
+
+Support vector machines 
+-----------------------------
+
+- Support vector machine is a supervised learning model for
+  classification problems.
+
+- It relies on the notion of a separating hyperplane.
+
+- Data is usually described by a set of descriptor, e.g. oranges and
+  apples may be described by their radius, color, texture et cetera.
+
+- In order to use a SVM, one must train the model using data vectors
+  about labeled samples. The model infers an optimal partition of the
+  feature space, such that new samples from the same distribution
+  are accurately classified.
+
+- Pros:
+    * simple to implement
+
+- Cons:
+    * susceptible to over-fitting
+    * human interpretation of the model is sometimes difficult
+
+- In the first part of this work, we present an exploratory attempt to
+  detect peptide-binding residues on a protein surface using a SVM.
+
+The findings in the peptidb paper pointed to the unique features of
+peptide-protein interactions. 
+These features are encoded in the receptor structure, like pockets,
+hydrogen bonding side-chains, surface accessibility, minimal
+conformational change.
+
+Definitions of residue features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In a follow up study, we looked into the feasibility of designing a
+Support Vector Machine as a predictor of peptide binding sites. We
+looked at three qualitatively-different descriptors of a receptor
+residue as features:
+
+1. **Surface geometry**: we analyzed the receptor structure with
+   CASTp [castp2009]_, which calculates
+   pockets near the receptor surface. We then scored each residue
+   based on its nearest pocket (size of pocket, proximity to pocket).
+2. **Sequence conservation**: we used the ConSurf database [consurf]_
+   to acquire conservation scores for each residue in the receptor.
+3. **Computational fragment mapping**: we used the FTMap protocol
+   [ftmap]_ to simulate fragment binding to the receptor surface. 
 
 
 Rosetta FlexPepDock
