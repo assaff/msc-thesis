@@ -6,18 +6,19 @@ Background and Related Work
 Hallmarks of peptide-protein interactions
 ------------------------------------------------------
 
-Protein-protein interactions are involved in numerous cellular
-processes, from *something* to *something else*.
+Protein interactions are involved in all cellular
+processes.
 
-These interactions take place at interfaces of various forms,
-depending on the function and structure of the parties involved.
+These interactions take place at molecular interfaces of various
+forms, depending on the function and structure of the parties
+involved.
 Many interfaces, especially in large, stable complexes, feature two
 globular proteins each exposing a relatively broad, flat surface as
 binding interface.
 
 Alternatively, these interactions are mediated by a short, linear
-peptide (whether as a free molecule, or a segment in one partner),
-interacting with a patch on the surface of another protein (i.e. a
+peptide (whether as a free molecule, or a short region in one partner),
+binding a globular domain of another protein (i.e. a
 receptor).
 Often, the peptide is disordered in solution, yet assumes a defined
 structure upon binding.
@@ -46,16 +47,22 @@ PePIs comprise a unique class of molecular interactions
 
 The constraints imposed by the small interface directly affect the
 nature of these interactions.
-- Since the interface is limited to a few residues, there is very little enthalpy to be gained to begin with. 
+
+- Since the interface is limited to a few residues, there is very
+  little enthalpy to be gained to begin with. 
   Therefore, PePIs are often transient and weak, making them very
   responsive to changes in their environment.
-  This property is very appropriate for *signalling*, the primary
-  cellular purpose of these interactions.
+  This property is very appropriate for *signalling* and *regulation*,
+  the primary cellular purposes of these interactions.
+
+- Peptides are similar to microRNA, in the sense that they affect
+  critical junctures in the molecular interaction network, and are
+  highly evolvable.
 
 .. subsubsection: therapeutic peptides
 
 Besides the purely-scientific interest in this special class of
-molecular interaction, it is also a highly attractive subject for
+molecular interaction, it is also a highly compelling subject for
 engineering and biomedical research.
 The smaller, less-complex binding interface lends itself well to
 manipulation, since the effect of mutation can be easily isolated and
@@ -68,8 +75,9 @@ several successful designs in clinical trials.
 Drug design using small molecules is mostly about manipulation of
 catalytic interactions, e.g. disrupting catalysis by a drug to
 compete for an enzyme active site against a natural substrate.
-Engineering peptide-mediated interactions opens up many cellular
-interactions (signaling) as drug targets.
+
+Targeting peptide-mediated interactions opens up many cellular
+interactions (signaling) as drug targets, which were not 
 
 
 Structural characterization of PePIs
