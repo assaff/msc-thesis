@@ -2,7 +2,7 @@
 Methods
 ========
 
-A machine-learning approach to binding residue prediction
+Support-vector classification of peptide-binding residues
 ----------------------------------------------------------
 
 We launched an effort to learn the critical features of binding 
