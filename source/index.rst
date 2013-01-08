@@ -12,16 +12,22 @@
 Table of Contents
 ==================
 
-.. toctree::
-   :maxdepth: 2
+.. only:: html
 
-   notes
-   abstract
-   background
-   methods
-   results
-   discussion
-   references
+    .. toctree::
+        :maxdepth: 1
+
+        notes
+
+.. toctree::
+    :maxdepth: 2
+
+    abstract
+    background
+    methods
+    results
+    discussion
+    references
 
 
 .. Indices commented out
