@@ -302,12 +302,6 @@ protein are correctly classified as homotrimers.
 
 .. note:: address differences between bound/unbound crystal contacts.
 
-.. _table-peptidb:
-
-.. csv-table:: PeptiDB2 table
-    :file: _tables/peptidb2_table1.csv
-    :header-rows: 1
-    
 
 Characterization of hot spot residues in PeptiDB2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -341,7 +335,7 @@ unbound receptor visibly overlapping with the peptide.
 This usually involves an extended terminus in the unbound receptor. We
 have yet to investigate the meaning of this phenomenon.
 
-PeptiMap: toward an accurate predictor of peptide binding sites
+Toward accurate prediction of peptide binding sites
 ----------------------------------------------------------------
 
 Are hot-spots enough to predict the entire binding site?
@@ -449,30 +443,6 @@ that actually have CATH domains defined:
     0.
     
 
-Computational fragment mapping is a reliable approximation of hot-spot analysis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Rationale of fragment mapping approach
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Track record of FT-Map in other contexts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Method: what is different about PeptiMap
-
-
-PeptiMap successfully predicts binding sites
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Against the competition
-
-Low-resolution modeling of PPIs from PeptiMap predictions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-some results here
-
-
-
 Predicting peptide binding sites 
 --------------------------------
 
@@ -480,13 +450,14 @@ In order to evaluate how reliable PeptiMap identifies peptide binding
 sites on protein structure, we tested it over a set of unbound
 receptors taken from the PeptiDB v2 data set.
 
-[Move to methods] When queried with a receptor structure, PeptiMap
-performs the FFT analysis and outputs a ranked list of consensus
-sites, each represented by atoms of the respective probes. We consider
-a result (predicted binding site) successful when its centroid is
-within 4 angstroms of any peptide atom - a criterion we borrow from
-the LigSite method. [Methods: assessment of
-prediction quality]
+.. comment
+    When queried with a receptor structure, PeptiMap
+    performs the FFT analysis and outputs a ranked list of consensus
+    sites, each represented by atoms of the respective probes.
+    We consider a result (predicted binding site) successful when its
+    centroid is within 4 angstroms of any peptide atom - a criterion we
+    borrow from the LigSite method. [Methods: assessment of prediction
+    quality]
 
 Out of the 48 structures [with status either 1 or 2] in the PeptiDB
 data set, 29 were evaluated by PeptiMap [why just 29?]. Initial
@@ -503,21 +474,29 @@ protein, inter-domain crevices are known to bias the search. Therefore
 in multi-domain proteins we analyze each domain separately, and the
 receptor at large as well. 
 
-[Compare with pepsite]
-
-
 We tested PeptiMap on PeptiDB2, and compared it to PepSite
-[Petsalaki2009]_, a program for peptide binding site prediction, that searches for structural environments that are similar to ones observed in known complex structures, on a residue basis.
+[Petsalaki2009]_, a program for peptide binding site prediction, that
+searches for structural environments that are similar to ones observed
+in known complex structures, on a residue basis.
 
-In this initial assessment, we used the interactions with identical sequence in the bound and unbound receptor. This eliminates artifacts that may result from sequence changes in the binding site.
+In this initial assessment, we used the interactions with identical
+sequence in the bound and unbound receptor. This eliminates artifacts
+that may result from sequence changes in the binding site.
 
 
 Overall performance of PeptiMap
 -------------------------------
 
-PeptiMap accuracy is increased when the search is performed on distinct domains, and interfaces between domains and between other binding partners are masked (“PeptiMap dom”, red bars). This allows to focus the search on relevant regions.
+PeptiMap accuracy is increased when the search is performed on
+distinct domains, and interfaces between domains and between other
+binding partners are masked (“PeptiMap dom”, red bars). This allows to
+focus the search on relevant regions.
 
-Success criterion: center of predicted site is within 4Å of any peptide heavy atom. Performance of PepSite2 is shown for comparison.
+Success criterion: center of predicted site is within 4Å of any
+peptide heavy atom. Performance of PepSite2 is shown for comparison.
 
-Example of PeptiMap prediction for the unbound human TRAF domain, overlaid with the peptide from a complex structure of TRAF with PQQADD from CD40 (PDB IDs 1CA4, 1CZY); the peptide overlaps with sites ranked 1 (magenta), 2 (yellow) and 5 (blue).
+Example of PeptiMap prediction for the unbound human TRAF domain,
+overlaid with the peptide from a complex structure of TRAF with PQQADD
+from CD40 (PDB IDs 1CA4, 1CZY); the peptide overlaps with sites ranked
+1 (magenta), 2 (yellow) and 5 (blue).
 
