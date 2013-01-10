@@ -18,6 +18,9 @@ import sys, os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
+# add custom extensions directory to python path
+sys.path.append(os.path.join(os.path.abspath(os.path.dirname(__file__)), '_extensions'))
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -32,6 +35,7 @@ extensions = [
                 'sphinx.ext.ifconfig', 
                 'sphinx.ext.viewcode',
                 'sphinx.ext.autodoc',
+                'numfig',
                 'rst2pdf.pdfbuilder',
                 # use bibtex extension
                 'sphinxcontrib.bibtex',
@@ -410,3 +414,5 @@ pdf_fit_background_mode = 'scale'
 #####################################
 
 todo_include_todos = True
+
+
