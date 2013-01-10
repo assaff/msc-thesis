@@ -4,7 +4,7 @@ Results
 
 .. note:: add outline paragraph (what do results include).
 
-Prediction of interfaces using a machine-learning approach
+Support-vector classification of surface residues
 --------------------------------------------------------------
 
 In Methods, we described multiple protocols which can be
