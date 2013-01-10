@@ -2,7 +2,27 @@
 Results
 =======
 
-.. note:: add outline paragraph (what do results include).
+Recapitulating previous work by London et al., peptide-protein
+interactions are characterized by several features. 
+They found that peptides usually bind within a large pocket in the
+receptor, and form a thick web of hydrogen bonds with the interface
+residues on the receptor side.
+It was also noted that hot spot residues are responsible for the lion's
+share of interaction energy, using mostly non-polar interactions. 
+
+Indeed, these features characterize peptide-protein interactions, but
+do they *determine* the peptide binding site?
+If so, which features are most important?
+Can we accurately predict a peptide binding site based on this
+analysis?
+
+In this section we show that these receptor-intrinsic properties
+indeed guide the interaction to a measureable extent, particularly the
+sites that can potentially interact with hot-spot residues.
+We present a data set of peptide-protein interactions, curated to
+reliably reflect these interfaces.
+Finally we evaluate our capacity to predict hot-spot interactions
+in peptide-protein interactions using computational fragment mapping.
 
 Support-vector classification of surface residues
 --------------------------------------------------------------
@@ -35,8 +55,26 @@ without any knowledge of the peptide or where it binds.
 
 Given an input protein structure, the SVM classifier we designed
 outputs a list of its surface residues (solvent accessibility obtained
-from NAccess), each scored with the level of confidence that residue
-is a binding residue.
+from NAccess), each scored with a probability of being a binding residue.
+
+We performed 3-fold stratified cross-validation of our classification
+model over the set of surface residues of bound receptor structures. 
+Each iteration involved training a classifier using two folds, and
+testing it on the third one.
+The classifier's performance is measured by the area under the ROC
+curve associated with it.
+
+.. figure:: _images/roc-svm.png
+    :align: center
+
+    ROC curves of SVM classifiers during 3-fold cross-validation.
+
+The model achieves a mean AUC of :math:`0.81`, with very little
+variance between CV instances. This supports our hypothesis that the
+features we selected indeed carry a measurable signal disclosing the
+interface residues on a protein surface.
+
+
 In order to produce meaningful results out of such a list, we applied
 an extra step of clustering these residues hierarchically.
 That step produces a ranked set of residue clusters, each a
