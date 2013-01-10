@@ -27,21 +27,65 @@ in peptide-protein interactions using computational fragment mapping.
 Support-vector classification of surface residues
 --------------------------------------------------------------
 
-In Methods, we described multiple protocols which can be
-used to derive features that characterize the protein surface (FTMap,
-CASTp, ConSurf, polarity, hbonding...).
-We use a support vector machine to integrate these features into a
-classifier that should identify the peptide-binding residues.
-Output data from these protocols feed into our SVM model, such that
-they inform the model about different characteristics of the residues
-in question.
+We draft a strategy for detecting a peptide binding sites, under the
+assumption that it is determined by the hallmark chemistry detailed
+above. [**like a chemical fingerprint of PePIs**]
 
-An underlying assumption in this part is that a peptide binding
-site is defined by the surface residues in proximity to the peptide in
-the complex structure.
+By defining a peptide binding site by the receptor residues in
+proximity to the peptide in the bound complex, one would 
+be able to locate it by identifying surface residues that have high
+capacity to take part in these interactions.
+
+.. comment
+    These residues can be characterized by their capacity to take part in the chemical processes described above.
+    An underlying assumption in this part is that a peptide binding
+    site is defined by the surface residues in proximity to the peptide in
+    the complex structure.
+
+.. comment
+    We assemble a profile for each surface residue, quantifying its
+    capacity to take part in different hallmark characteristics.
+    We use several protocols to analyze the receptor structure.
+    This analysis is used to derive features 
+    We quantify a residue's probability of by deriving
+    residues by their capacity to 
+
+Structural features indicate the binding site
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Methods, we described multiple protocols which can be used to
+derive features that characterize the protein surface (namely FTMap,
+CASTp, ConSurf, polarity, hbonding).
+While these protocols analyze the entire receptor, we derive features
+that describe individual residues.
+
+These features are integrated into a
+support-vector classifier (see :ref:`methods-svm`) that should
+identify the peptide-binding residues.
+
+.. comment
+    Output data from these protocols feed into our SVM model, such
+    that they inform the model about different characteristics of the
+    residues in question.
+
+Features include:
+
+- FragmentNormalizedRank, FragmentSize
+- PocketSize
+- ConservationScore
+- AA polarity and hbonding
+
 Our goal is to identify these residues in the receptor structure
 (whether bound or unbound), using these intrinsic properties, but
 without any knowledge of the peptide or where it binds.
+As a starting point, we trained our model on the set of bound receptor
+structure.
+
+.. figure:: _images/svm-flowchart.svg
+    :align: center
+
+    Schematic description of data flow in our classification model.
+
 
 .. note: Move to methods:
 
