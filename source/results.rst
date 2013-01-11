@@ -78,8 +78,8 @@ Features include:
 Our goal is to identify these residues in the receptor structure
 (whether bound or unbound), using these intrinsic properties, but
 without any knowledge of the peptide or where it binds.
-As a starting point, we trained our model on the set of bound receptor
-structure.
+As a starting point, we trained our model on surface residues from the
+set of bound receptor structure.
 
 .. figure:: _images/svm-flowchart.png
     :align: center
@@ -96,10 +96,6 @@ structure.
     Discrete variables were assigned consecutive integer values.
     All variables then underwent normalization (for details, see Methods
     section).
-
-Given an input protein structure, the SVM classifier we designed
-outputs a list of its surface residues (solvent accessibility obtained
-from NAccess), each scored with a probability of being a binding residue.
 
 We performed 3-fold stratified cross-validation of our classification
 model over the set of surface residues of bound receptor structures. 
@@ -118,6 +114,11 @@ variance between CV instances. This supports our hypothesis that the
 features we selected indeed carry a measurable signal disclosing the
 interface residues on a protein surface.
 
+Clustering highly-ranked residues is useful
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Given an input protein structure, the SVM classifier we designed
+outputs a list of its surface residues, each scored with a probability of being a binding residue.
 
 In order to produce meaningful results out of such a list, we applied
 an extra step of clustering these residues hierarchically.
