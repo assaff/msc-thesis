@@ -81,7 +81,7 @@ without any knowledge of the peptide or where it binds.
 As a starting point, we trained our model on the set of bound receptor
 structure.
 
-.. figure:: _images/svm-flowchart.svg
+.. figure:: _images/svm-flowchart.png
     :align: center
 
     Schematic description of data flow in our classification model.
