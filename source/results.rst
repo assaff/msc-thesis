@@ -347,7 +347,7 @@ Several interactions exhibited symmetry mates of the free receptor
 crystal structure closely overlapping with the peptide in the complex
 structure.
 
-.. _fig-cryst-contacts-unbound-pdz
+.. _fig-cryst-contacts-unbound-pdz:
 
 .. figure:: _images/1n7f-crystal-contacts.png
     :align: center
@@ -388,7 +388,7 @@ This crystal contact is assymetrical and does not support a homodimer.
 It does, however, allow an oligomer to form via circular chaining of
 certain symmetry mates. [**consult with Ora**]
 
-.. _fig-cryst-contacts-unbound-2aax
+.. _fig-cryst-contacts-unbound-2aax:
 
 .. figure:: _images/fig-cryst-contacts-unbound-2aax.png
     :align: center
