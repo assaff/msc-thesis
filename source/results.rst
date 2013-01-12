@@ -347,11 +347,62 @@ Several interactions exhibited symmetry mates of the free receptor
 crystal structure closely overlapping with the peptide in the complex
 structure.
 
+.. _fig-cryst-contacts-unbound-pdz
+
 .. figure:: _images/1n7f-crystal-contacts.png
     :align: center
     :width: 75%
 
-    1N7E crystal contact, with high overlap with the peptide.
+    The crystal structure of the PDZ6 domain of GRIP1, as solved in an
+    *unbound* context, interacting with the C-terminal tail of one of
+    its neighbor proteins in the crystal (grey cartoon, sequence
+    TDAQPASS). 
+    The peptide that binds PDZ6, an 8-mer derived from liprin alpha,
+    is superpositioned in its native binding site (PDBID 1N7F,
+    sequence ATVRTYSC).
+    Note the high overlap between the native peptide and the C
+    terminus, manifested in a 2.43A RMSd calculated over backbone
+    atoms of the two fragments (2.06A over the last 7 residues).
+
+:num:`Figure #fig-cryst-contacts-unbound-pdz` illustrates one
+interesting instance of crystal contacts in the unbound crystal
+structure.
+A symmetry mate of the unbound receptor clearly interacts with the
+binding site of the peptide.
+
+The paper describing the experiment addresses this issue, suggesting a
+dual mechanism of dimerization of PDZ6. In its free form, PDZ6 is able
+to form an antiparallel dimer using its C-terminus to bind the binding
+pocket of its partner. Upon binding the liprin alpha peptide, a
+parallel beta sheet can form in en entirely different orientation.
+http://www.jbc.org/content/278/10/8501.long
+
+We observe a similar patter in the free structure of human
+Mineralocorticoid receptor (mutated C808S, S810L) 
+(:num:`Figure #fig-cryst-contacts-unbound-2aax`).
+The N-terminal helix of chain B interacts with the binding pocket. 
+Peptide is superpositioned in the binding site for comparison.
+Biological unit is dimeric according to both PDB files, but the AB
+dimer in the structure is "irrelevant biologically".
+This crystal contact is assymetrical and does not support a homodimer.
+It does, however, allow an oligomer to form via circular chaining of
+certain symmetry mates. [**consult with Ora**]
+
+.. _fig-cryst-contacts-unbound-2aax
+
+.. figure:: _images/fig-cryst-contacts-unbound-2aax.png
+    :align: center
+
+    Crystal structure of human Mineralocorticoid receptor in its
+    unbound form (green surface representation), 
+    with the N-terminal helix from one symmetry
+    mate (03000100) displayed occupying the peptide binding site
+    (purple).
+    The QQKSLLQQLLTE peptide from Nuclear Receptor Coactivator 1 is
+    superpositioned in its binding site (gold).
+
+Since X-ray structures are the reference point of many structural
+studies of proteins, determining whether crystal contacts  
 
 In other interactions, we noticed symmetry mates of the bound
 receptor possibly stabilizing the peptide in the interface.
