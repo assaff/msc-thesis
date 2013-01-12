@@ -41,6 +41,9 @@ extensions = [
                 'sphinxcontrib.bibtex',
             ]
 
+numfig_number_figures = True
+numfig_figure_caption_prefix = "Figure"
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
