@@ -495,19 +495,6 @@ Characterization of hot spot residues in PeptiDB2
     residues in PeptiDB2, versus that in non-hot-spot residues in the
     same data set.
 
-Crystal contacts in PePIs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In several of the structures curated, we noticed symmetry mates of the
-unbound receptor visibly overlapping with the peptide. 
-
-..
-    Comparing the sequences of these tails to their corresponding peptides
-    did not reveal high sequence correlation **[STATISTICS HERE]**.
-
-This usually involves an extended terminus in the unbound receptor. We
-have yet to investigate the meaning of this phenomenon.
-
 Toward accurate prediction of peptide binding sites
 ----------------------------------------------------------------
 
