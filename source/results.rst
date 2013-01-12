@@ -355,13 +355,13 @@ The implications of crystal contacts at the binding site
     They can, however, reveal surprising mechanisms of strutural
     regulation.
 
-Molecular visualization programs are able to reproduce the arrangement
-of proteins in the crystal by generating additional copies and
-transforming them using translation and rotation matrices documented
-in the experiment data. 
-These additional copies are called *symmetry mates*, and within small
-distances from the protein, they illustrate the immediate environment
-of the protein in the crystal.
+    Molecular visualization programs are able to reproduce the arrangement
+    of proteins in the crystal by generating additional copies and
+    transforming them using translation and rotation matrices documented
+    in the experiment data. 
+    These additional copies are called *symmetry mates*, and within small
+    distances from the protein, they illustrate the immediate environment
+    of the protein in the crystal.
 
 .. commented
     One of the standard methods we applied to investigate crystal contacts
@@ -428,17 +428,22 @@ certain symmetry mates. [**consult with Ora**]
     superpositioned in its binding site (gold).
 
 Since X-ray structures are the reference point of many structural
-studies of proteins, determining whether crystal contacts  
+studies of proteins, determining whether crystal contacts are 
 
-In other interactions, we noticed symmetry mates of the bound
-receptor possibly stabilizing the peptide in the interface.
+.. note:: Bound crystal contacts stabilizing peptide
 
-In some cases, crystal structures are mis-annotated with respect to
-biological assembly. For instance, one structure in PeptiDB is
-listed as a monomer, and the crystal structure includes only one
-chain. Applying symmetry operations reveals symmetry mates forming a
-radially-symmetric homotrimer. Indeed, other structures of the same
-protein are correctly classified as homotrimers.
+    In other interactions, we noticed symmetry mates of the bound
+    receptor possibly stabilizing the peptide in the interface.
+
+Biological units
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: What is the message here?
+
+    In some cases, crystal structures are mis-annotated with respect to
+    biological unit.
+    During the curation of PeptiDB2 this issue required manual inspection
+    and cross-referencing of protein structures and annotations.
 
 .. note:: requires support
 
@@ -446,7 +451,38 @@ protein are correctly classified as homotrimers.
     estimate 50% of all X-ray structures in the Protein Data Bank
     include incorrect biological assembly remarks.
 
-.. note:: address differences between bound/unbound crystal contacts.
+In order to simplify analysis, curation of PeptiDB 1 included cleaning
+raw PDB structures from inconsistent data.
+One procedure applied as preprocessing was extracting the interacting
+chain from the whole structure [**why? was it just convenience?**].
+That was OK for analyzing the interactions.
+However, to distinguish a
+binding site from the rest of the protein it is best to be aware of
+the actual surface exposed by the protein in its biological context.
+
+.. _fig-trimer-1ca4:
+
+.. figure:: _images/fig-trimer-1ca4.png
+    :align: center
+    :width: 75%
+
+    Caption for TRAF trimer figure.
+
+For example, we've curated the crystal structure of the TRAF domain
+trimer (PDBID 1ca4ABC) (:num:`Figure #fig-trimer-1ca4`).
+In peptiDB 1 it is analyzed as a monomer
+(chain A).
+This makes any prediction protocol take into account residues that are
+usually not even exposed to the solvent, and hence they are not
+accessible to the peptide.
+
+.. note:: SH2 misannotation (?) as tetramer
+
+    The crystal structure of SAP SH2 domain (PDBID 1d1z) is a high
+    resolution model of a common domain involved in many signalling
+    pathways.
+    The author-determined biological unit for this protein is a
+    *tetramer*, while in another structure it is a dimer.
 
 
 Characterization of hot spot residues in PeptiDB2
