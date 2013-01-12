@@ -495,15 +495,6 @@ Characterization of hot spot residues in PeptiDB2
     residues in PeptiDB2, versus that in non-hot-spot residues in the
     same data set.
 
-PeptiDB2 summary table
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. csv-table::
-    :url: https://docs.google.com/spreadsheet/pub?key=0ApXQ1x_sHoGrdFYwdEJ6aTFZckc3cHlzZEVzV01jUWc&single=true&gid=2&range=A1%3AF10&output=csv
-    :header-rows: 1
-    :widths: 2 1 1 2 1 2
-
-
 Crystal contacts in PePIs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
