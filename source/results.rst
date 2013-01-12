@@ -339,9 +339,34 @@ of automated binding site prediction methods.
 The implications of crystal contacts at the binding site
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One of the standard methods we applied to investigate crystal contacts
-in a PePI was to compare symmetry mates of the unbound structure
-(within 5A) with the peptide itself.
+.. note:: Crystal Contacts in X-ray structures
+
+    The most prominent method for solving protein structures is X-ray
+    crystallography. To apply it, a crystal is made from a highly
+    concentrated solution of the protein. In the crystal, individual
+    protein molecules are arranged in a lattice. The crystal is then
+    blasted with an X-ray beam, and an electron-density
+    map is obtained from the resulting diffraction pattern.
+    
+    Due to the high concentration in the solution, sometimes proteins
+    in the crystal bind each other. These interactions, which are
+    suspected artifacts of the experiment, are called
+    *crystal contacts*.
+    They can, however, reveal surprising mechanisms of strutural
+    regulation.
+
+Molecular visualization programs are able to reproduce the arrangement
+of proteins in the crystal by generating additional copies and
+transforming them using translation and rotation matrices documented
+in the experiment data. 
+These additional copies are called *symmetry mates*, and within small
+distances from the protein, they illustrate the immediate environment
+of the protein in the crystal.
+
+.. commented
+    One of the standard methods we applied to investigate crystal contacts
+    in a PePI was to compare symmetry mates of the unbound structure
+    (within 5A) with the peptide itself.
 
 Several interactions exhibited symmetry mates of the free receptor
 crystal structure closely overlapping with the peptide in the complex
@@ -371,10 +396,11 @@ A symmetry mate of the unbound receptor clearly interacts with the
 binding site of the peptide.
 
 The paper describing the experiment addresses this issue, suggesting a
-dual mechanism of dimerization of PDZ6. In its free form, PDZ6 is able
-to form an antiparallel dimer using its C-terminus to bind the binding
-pocket of its partner. Upon binding the liprin alpha peptide, a
-parallel beta sheet can form in en entirely different orientation.
+dual mechanism of dimerization of PDZ6 [**citation here**].
+In its free form, PDZ6 is able to form an antiparallel dimer using its
+C-terminus to bind the binding pocket of its partner. 
+Upon binding the liprin alpha peptide, a parallel beta sheet can form
+in en entirely different orientation.
 http://www.jbc.org/content/278/10/8501.long
 
 We observe a similar patter in the free structure of human
@@ -419,20 +445,6 @@ protein are correctly classified as homotrimers.
     In fact, in a recent study, Dunbrack et al. *[citation here]*
     estimate 50% of all X-ray structures in the Protein Data Bank
     include incorrect biological assembly remarks.
-
-.. note:: Crystal Contacts in X-ray structures
-
-    The most prominent method for solving protein structures is X-ray
-    crystallography. To apply it, a crystal is made from a highly
-    concentrated solution of the protein. In the crystal, individual
-    protein molecules are arranged in a lattice. The crystal is then
-    blasted with an X-ray beam, and an electron-density
-    map is obtained from the resulting diffraction pattern.
-    
-    Due to the high concentration in the solution, sometimes proteins
-    in the crystal bind each other. These interactions, which are
-    mostly presumed to be artifacts of the experiment, are called
-    *crystal contacts*,
 
 .. note:: address differences between bound/unbound crystal contacts.
 
