@@ -27,7 +27,7 @@ Table of Contents
     methods
     results
     discussion
-    references
+    zreferences
 
 
 .. Indices commented out
