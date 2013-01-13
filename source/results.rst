@@ -130,12 +130,12 @@ For each input protein, we calculate precision and recall of the
 classifier over a subset of output clusters. For instance, "top-3
 recall" means the average of binding site recall rates, calculated
 over the 3 top-ranked clusters.
+Clusters are ranked by spatial clustering degree, aiming for
+tightly-knit groups of positive predictions to be ranked high.
 
-.. note::
-
-    * how are clusters ranked?
-
-.. note:: define a classifier as SVM + clustering scheme
+This pipeline essentially constitutes a prediction protocol, which
+upon an input protein structure generates a ranked list of residue
+clusters as predicted binding sites.
 
 Performance of SVM is dependent on xyz, therefore we 
 We examined multiple configurations of the SVM to optimized recall and
@@ -602,6 +602,8 @@ that actually have CATH domains defined:
     That's because in 10 interactions there is no other domain except
     0.
     
+----------------------------
+
 
 Predicting peptide binding sites 
 --------------------------------
