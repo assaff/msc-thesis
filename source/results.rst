@@ -86,17 +86,6 @@ set of bound receptor structure.
 
     Schematic description of data flow in our classification model.
 
-
-.. note: Move to methods:
-
-    For each of the data sources, we formulated variables to capture the
-    information these sources disclose about a given residue.
-    These variables were used as columns in the training table for the SVM
-    software, in addition to binary labels (binder/non-binder).
-    Discrete variables were assigned consecutive integer values.
-    All variables then underwent normalization (for details, see Methods
-    section).
-
 We performed 3-fold stratified cross-validation of our classification
 model over the set of surface residues of bound receptor structures. 
 Each iteration involved training a classifier using two folds, and

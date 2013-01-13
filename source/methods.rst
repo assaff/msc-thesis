@@ -2,6 +2,8 @@
 Methods
 ========
 
+.. _methods-svm:
+
 Support-vector classification of peptide-binding residues
 ----------------------------------------------------------
 
@@ -25,6 +27,14 @@ Why?
 * Weights can be extracted for different features, shedding light into
   the critical features.
 
+
+For each of the data sources, we formulated variables to capture the
+information these sources disclose about a given residue.
+These variables were used as columns in the training table for the SVM
+software, in addition to binary labels (binder/non-binder).
+Discrete variables were assigned consecutive integer values.
+All variables then underwent normalization (for details, see Methods
+section).
 
 
 .. attention::
