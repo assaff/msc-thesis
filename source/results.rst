@@ -424,6 +424,45 @@ studies of proteins, determining whether crystal contacts are
     In other interactions, we noticed symmetry mates of the bound
     receptor possibly stabilizing the peptide in the interface.
 
+.. _fig-cryst-p15tap-1jkg:
+
+.. figure:: _images/fig-cryst-p15tap-1jkg.png
+    :align: center
+    :width: 75%
+    :alt: figure of TAP-p15 complex with FG-repeat peptide
+    :target: http://dx.doi.org/10.1016/S1097-2765(01)00348-3
+
+    Caption here
+
+Another interesting interaciton is between the human TAP-p15
+heterodimer and a FG-repeat peptide from nucleoporin (:num:`Figure
+#fig-cryst-p15tap-1jkg`)
+The peptide binds a hydrophobic pocket on TAP, with no direct
+interaction with p15.
+However, p15 is required for a stable interaction [**??**].
+
+Upon generating symmetry mates for the heterodimer, it becomes clear
+that it binds yet another peptide fragment.
+The C-terminal tail of the crystallized TAP structure, part of a
+linker to a subsequent UBA domain, binds the heterodimer in an
+inter-domain groove between p15 and TAP, adjacent to the FG-peptide
+binding site.
+
+
+.. note::
+    
+    - in both structures there's a missing loop 423-429, located away
+      from the interface.
+
+    - TAP is made from two domains (NTF2-like and Ubiquitin-like),
+      only the NTF2 domain is crystallized (UBA was disordered).
+      The C-terminal tail is the linker between the domains.
+
+    - To the best of our knowledge, there is no evidence that this
+      interaction is biologically significant.
+      In that case, it illustrates the difficulty in identifying these
+      interactions.
+
 Biological units
 ~~~~~~~~~~~~~~~~~~~~~~
 
