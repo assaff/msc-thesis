@@ -4,8 +4,8 @@ Results
 
 Recapitulating previous work by London et al., peptide-protein
 interactions are characterized by several features. 
-They found that peptides usually bind within a large pocket in the
-receptor, and form a thick web of hydrogen bonds with the interface
+The previous study found that peptides usually bind within a large pocket in the
+receptor, and form a network of hydrogen bonds with the interface
 residues on the receptor side.
 It was also noted that hot spot residues are responsible for the lion's
 share of interaction energy, using mostly non-polar interactions. 
@@ -23,6 +23,11 @@ We present a data set of peptide-protein interactions, curated to
 reliably reflect these interfaces.
 Finally we evaluate our capacity to predict hot-spot interactions
 in peptide-protein interactions using computational fragment mapping.
+
+.. warning::
+
+    ORA: improve here the flow - between each sentence make a connection so the reader gets why you did this. You can write something about residues-based vs site based, and about the strong signal you got for FTmap
+
 
 Support-vector classification of surface residues
 --------------------------------------------------------------
@@ -75,23 +80,41 @@ Features include:
 - ConservationScore
 - AA polarity and hbonding
 
+.. warning::
+
+    [ORA: define these features (at least in methods - and then write a short sentence to remind the reader here what these names mean). Polarity and hbonding probably means that you look at whether the amino acid can be a donor or acceptor, right? This information helps the reader understand. In short, read this with the eyes of a layman and see if you would understand...]
+
 Our goal is to identify these residues in the receptor structure
 (whether bound or unbound), using these intrinsic properties, but
 without any knowledge of the peptide or where it binds.
 As a starting point, we trained our model on surface residues from the
-set of bound receptor structure.
+set of bound receptor structures.
+
+.. warning::
+
+    [ORA: improve figure- larger font and remove the comment to Dana. Also, I think that the important part is here what is input: FTMap, CastP,etc and the output of each of these  should be in a similar format as Naccess and SASA, and polarity... THe scheme can be much simpler and does not need the post-processing square (this can be mentioned in the text/methods and is not important). 
+You can indeed put it to the methods as you write below in Notes. In that case, just improve the flow so here it sounds right without the scheme.]
 
 .. figure:: _images/svm-flowchart.png
     :align: center
 
     Schematic description of data flow in our classification model.
 
-We performed 3-fold stratified cross-validation of our classification
+We performed 3-fold stratified cross-validation (CV) of our classification
 model over the set of surface residues of bound receptor structures. 
 Each iteration involved training a classifier using two folds, and
 testing it on the third one.
+
+.. warning::
+
+    [ORA: change the word "folds": this is confusing as it could also mean structural fold. You can write: using 2/3 of the data set and testing on the remaining 1/3.]
+
 The classifier's performance is measured by the area under the ROC
 curve associated with it.
+
+.. warning::
+
+    [ORA: define ROC in the Methods section, or here....]
 
 .. figure:: _images/roc-svm.png
     :align: center
@@ -102,6 +125,12 @@ The model achieves a mean AUC of :math:`0.81`, with very little
 variance between CV instances. This supports our hypothesis that the
 features we selected indeed carry a measurable signal disclosing the
 interface residues on a protein surface.
+
+.. warning::
+
+    ORA: here give the weights of the different features in the different models: are they always similar, and what do they mean. e.g. show that the FTmap input provides a strong signal by itself.
+    
+    You or/and Dana did feature elimination - here is the place to put the results: you reached the conclusion that these are the important parameters and others are not somehow, and this should be mentioned here ...
 
 Clustering highly-ranked residues is useful
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,6 +151,11 @@ over the 3 top-ranked clusters.
 Clusters are ranked by spatial clustering degree, aiming for
 tightly-knit groups of positive predictions to be ranked high.
 
+
+.. warning::
+
+    [ORA: The paragraph above belongs to methods (you can judge when you write a very technical description that it probably needs to be moved). Here you should rather provide the results: show a figure that exemplifies an output, and how clustering in space helps focusing on dense clusters.]
+
 This pipeline essentially constitutes a prediction protocol, which
 upon an input protein structure generates a ranked list of residue
 clusters as predicted binding sites.
@@ -130,12 +164,24 @@ Performance of SVM is dependent on xyz, therefore we
 We examined multiple configurations of the SVM to optimized recall and
 precision on training sets, obtaining performance data for each (see
 figure comparing different classifiers we tried).
+
+
+.. warning::
+
+    [ORA: The transition between the per residue and per site assessment is a little difficult to follow: you should present the data in a similar format. So in addition to the ROC above, you could provide a similar plot to Figure 4.3., and compare it to 4.4.? It is still not clear why you needed clustering from your text, and how you compare, and define, "performance" in both contexts. (I can of course retrace it after I read the full text, but this should be clear to a layman during his reading, not only at the end...).]
+
 We experimented with different parameters of the SVM model, including:
 
 * The SVM score cutoff above which a residue is labeled binding.
 * The features on which the learning was based.
 * Clustering parameters (see ``cluster_residues.py`` in ``peptalk``
   project).
+
+.. warning::
+
+    Figure xx shows the performance using different combinations. 
+    
+    [ORA: you need to provide a legend of the different combinations, and connect this to the list above. I suggest that instead of the path as x-axis label, you A,B.... and then you specifiy what A,B... represent, in words].
 
 .. figure:: _images/top1_classifiers.png
     :align: center
@@ -158,11 +204,25 @@ The data show that the classifiers which incorporate all data sources
 (e.g. ``classifier1_full``) outperform those that specialize in one
 aspect of the interaction (e.g. ``classifier3_ftmap``), in terms of
 both recall and total F1 score.
+
+.. warning::
+
+    [ORA: you start here with a very small set of parameters and omitted other parameters here: what about "polar" and others that Dana analyzed? You should mention that these are not enough, or redundant.... Or did you look at this only at the residue level? you should then mention this too..]
+
 However, none of the classifiers reached a satisfactory level of
 accuracy.
+
+.. warning::
+
+    [ORA: You should explain why before you got 0.8 AUC on per residue basis and here the values are lower. It is not clear why then you moved to site rather than residue prediction.....]
+
 Moreover, we found that classifiers based on computational fragment
 mapping data alone (FTMAP) demonstrate markedly increased precision.
 That precision is robust to bfactor filtering.
+
+.. warning::
+
+    [ORA: define in methods what bfactor filtering is, and here define why you test this at all...]
 
 In other words, when a receptor residue is in proximity to an
 important CS (large, highly scored), it stands a high chance of being
@@ -173,9 +233,18 @@ where that classifier failed to find a hit within the top 3 results,
 FTMap did find at least one of the hot-spot binding sites, but ranked
 it too low for the classifier to detect the signal.
 
+.. warning::
+
+    [ORA: Figure 4.5. should come here and be referred to].
+
 **In other words, there was a disparity between the quality of
 predictions generated by the classifier, and the quality of the raw
 data provided by FTMap.**
+
+.. warning::
+
+    [ORA: So maybe we should redefine the criterion and look for defined hotspots only...]
+
 It has been well-shown that FTMap excels at detecting *hot-spot*
 binding sites, representing them as consensus clusters docked on the
 protein surface.
@@ -189,6 +258,10 @@ a clear signal we got from FTMap.
 
     The interface between Cyclophilin A and the HAGPIA peptide from HIV1
     capsid protein. The top-ranked FTMap consensus site overlaps PRO4.
+
+.. warning::
+
+    [ORA: stopped here]
 
 The interface core is comprised of residues with different chemical
 groups performing different roles in the interaction. 
