@@ -33,13 +33,18 @@ Support-vector classification of surface residues
 --------------------------------------------------------------
 
 We draft a strategy for detecting a peptide binding sites, under the
-assumption that it is determined by the hallmark chemistry detailed
-above. [**like a chemical fingerprint of PePIs**]
+assumption that it is determined by the distinguishing features of
+PePIs described by London et al in previous work. 
+In other words, we use these features as a *chemical fingerprint* of
+residues involved in PePIs.
 
 By defining a peptide binding site by the receptor residues in
 proximity to the peptide in the bound complex, one would 
 be able to locate it by identifying surface residues that have high
 capacity to take part in these interactions.
+In this section we consider classification performance at the residue
+level, i.e. each solvent-accessible residue in the protein is
+classified as binder or non-binder with some level of confidence.
 
 .. comment
     These residues can be characterized by their capacity to take part in the chemical processes described above.
@@ -66,7 +71,7 @@ that describe individual residues.
 
 These features are integrated into a
 support-vector classifier (see :ref:`methods-svm`) that should
-identify the peptide-binding residues.
+distinguish peptide-binding residues from the rest.
 
 .. comment
     Output data from these protocols feed into our SVM model, such
@@ -82,7 +87,18 @@ Features include:
 
 .. warning::
 
-    [ORA: define these features (at least in methods - and then write a short sentence to remind the reader here what these names mean). Polarity and hbonding probably means that you look at whether the amino acid can be a donor or acceptor, right? This information helps the reader understand. In short, read this with the eyes of a layman and see if you would understand...]
+    ORA: define these features (at least in methods - and then write
+    a short sentence to remind the reader here what these names mean).
+    Polarity and hbonding probably means that you look at whether the
+    amino acid can be a donor or acceptor, right? This information
+    helps the reader understand. 
+    
+    In short, read this with the eyes of a layman and see if you would
+    understand.
+
+In addition, each residue is labeled as binder if computational alanine
+scanning (using Rosetta) indicated a high increase in interaction energy upon mutation
+to alanine.
 
 Our goal is to identify these residues in the receptor structure
 (whether bound or unbound), using these intrinsic properties, but
@@ -92,8 +108,17 @@ set of bound receptor structures.
 
 .. warning::
 
-    [ORA: improve figure- larger font and remove the comment to Dana. Also, I think that the important part is here what is input: FTMap, CastP,etc and the output of each of these  should be in a similar format as Naccess and SASA, and polarity... THe scheme can be much simpler and does not need the post-processing square (this can be mentioned in the text/methods and is not important). 
-You can indeed put it to the methods as you write below in Notes. In that case, just improve the flow so here it sounds right without the scheme.]
+    ORA: improve figure- larger font and remove the comment to Dana.
+    
+    Also, I think that the important part is here what is input:
+    FTMap, CastP,etc and the output of each of these  should be in a
+    similar format as Naccess and SASA, and polarity... THe scheme can
+    be much simpler and does not need the post-processing square (this
+    can be mentioned in the text/methods and is not important). 
+
+    You can indeed put it to the methods as you write below in Notes.
+    In that case, just improve the flow so here it sounds right
+    without the scheme.
 
 .. figure:: _images/svm-flowchart.png
     :align: center
@@ -110,7 +135,33 @@ testing it on the third one.
     [ORA: change the word "folds": this is confusing as it could also mean structural fold. You can write: using 2/3 of the data set and testing on the remaining 1/3.]
 
 The classifier's performance is measured by the area under the ROC
-curve associated with it.
+curve associated with it (AUC).
+
+.. note::
+    
+    - only on full: add table detailing CV instances as rows, each described by the
+      feature weight vector it learned, its AUC using training and
+      test sets.
+      Last row should have mean & stddev values of all CVs
+
+    - generate mean ROC curves for different classifiers using CV:
+
+        - full classifier
+
+        - delta classifiers: remove one aspect
+        
+        - each aspect separately
+
+    - this is why the linear kernel SVM is appropriate here:
+
+        - it is less prone to overfitting, since the decision function
+          is very simple
+
+        - it is decomposable: the parameters learned by the model are
+          meaningful to a human, and do not require mathematical
+          manipulation.
+
+    - see SVM parameters used in FunHunt paper (Structure, 2007)
 
 .. warning::
 
@@ -144,6 +195,14 @@ That step produces a ranked set of residue clusters, each a
 geometrically-dense collection of presumably-binding surface residues
 as scored by the classifier.
 
+.. note::
+    
+    add a figure comparing clustering to prior prediction.
+    in prior context use just the top-scored residue as prediction
+    method.
+
+    That supports the clustering approach generally as a direction.
+
 For each input protein, we calculate precision and recall of the
 classifier over a subset of output clusters. For instance, "top-3
 recall" means the average of binding site recall rates, calculated
@@ -159,6 +218,20 @@ tightly-knit groups of positive predictions to be ranked high.
 This pipeline essentially constitutes a prediction protocol, which
 upon an input protein structure generates a ranked list of residue
 clusters as predicted binding sites.
+
+-----------------------------------
+
+.. note::
+
+    This subsection's goal is to establish FTMap as a reliable
+    predictor compared to the full set of features.
+    You should mention that during FTMap analysis, it takes into
+    account many geometrical and physico-chemical constraints,
+    including pockets, polarity, hbonding etc.
+
+    Therefore, **there's no need to compare it to CASTp**.
+    It is sufficient to state that it was a more practical choice, and
+    it also captures knobs-in-holes.
 
 Performance of SVM is dependent on xyz, therefore we 
 We examined multiple configurations of the SVM to optimized recall and
