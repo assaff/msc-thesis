@@ -59,15 +59,22 @@ classified as binder or non-binder with some level of confidence.
     This analysis is used to derive features 
     We quantify a residue's probability of by deriving
     residues by their capacity to 
+    #
+    #
+    Structural features indicate the binding site
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Structural features indicate the binding site
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In order to distinguish binding site residues from others, each
+residue in the data set is described by 6 features derived from
+analyses of its receptor protein by a variety of tools (see
+:num:`Table #table-svm-features`).
 
-In Methods, we described multiple protocols which can be used to
-derive features that characterize the protein surface (namely FTMap,
-CASTp, ConSurf, polarity, hbonding).
-While these protocols analyze the entire receptor, we derive features
-that describe individual residues.
+.. comment
+    In Methods, we described multiple protocols which can be used to
+    derive features that characterize the protein surface (namely FTMap,
+    CASTp, ConSurf, polarity, hbonding).
+    While these protocols analyze the entire receptor, we derive features
+    that describe individual residues.
 
 These features are integrated into a
 support-vector classifier (see :ref:`methods-svm`) that should
@@ -78,27 +85,46 @@ distinguish peptide-binding residues from the rest.
     that they inform the model about different characteristics of the
     residues in question.
 
-Features include:
+.. _table-svm-features:
 
-- FragmentNormalizedRank, FragmentSize
-- PocketSize
-- ConservationScore
-- AA polarity and hbonding
+.. list-table:: Features used in SVM classification of surface residues.
+    :stub-columns: 1
+    :header-rows: 1
+    :widths: 2 1 4
 
-.. warning::
+    * - Feature name
+      - Source
+      - Description
+    * - Fragment Normalized Rank
+      - FTMap
+      - rank of the CS
+    * - Fragment Size
+      - FTMap
+      - Size of the nearest CS
+    * - Conservation Score
+      - ConSurf DB
+      - Normalized conservations score assigned to
+        the residue using a MSA
+    * - Pocket Size
+      - CASTp
+      - Normalized size of the nearest pocket
+    * - Polarity
+      - Protein sequence
+      - Whether the residue is polar, i.e. belongs to the following
+        amino acids: [....]
+    * - Hydrogen-bonding
+      - Protein sequence
+      - Whether the residue is prone to form hydrogen bonds,
+        i.e. belongs to the list [....]
 
-    ORA: define these features (at least in methods - and then write
-    a short sentence to remind the reader here what these names mean).
-    Polarity and hbonding probably means that you look at whether the
-    amino acid can be a donor or acceptor, right? This information
-    helps the reader understand. 
-    
-    In short, read this with the eyes of a layman and see if you would
-    understand.
+In addition, each residue is labeled as binder if computational
+alanine scanning (using Rosetta) indicated a high increase in
+interaction energy upon mutation to alanine.
 
-In addition, each residue is labeled as binder if computational alanine
-scanning (using Rosetta) indicated a high increase in interaction energy upon mutation
-to alanine.
+.. figure:: _images/svm-flowchart.png
+    :align: center
+
+    Schematic description of data flow in our classification model.
 
 Our goal is to identify these residues in the receptor structure
 (whether bound or unbound), using these intrinsic properties, but
@@ -106,52 +132,76 @@ without any knowledge of the peptide or where it binds.
 As a starting point, we trained our model on surface residues from the
 set of bound receptor structures.
 
-.. warning::
+Fragment-based features are highly indicative of binding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    ORA: improve figure- larger font and remove the comment to Dana.
-    
-    Also, I think that the important part is here what is input:
-    FTMap, CastP,etc and the output of each of these  should be in a
-    similar format as Naccess and SASA, and polarity... THe scheme can
-    be much simpler and does not need the post-processing square (this
-    can be mentioned in the text/methods and is not important). 
+We performed 4-fold stratified cross-validation (CV) of our
+classification model over the set of surface residues of bound
+receptor structures. 
+Residues in the data sets were divided into subsets such that all the
+residues from any particular receptors belong to the same subset.
+**[Assaf: difficult to describe the value of this stratification in one
+sentence.]**
+Each iteration involved training a classifier using all-but-one
+subset, and predicting the remaining subset of residues.
+Comparing the model's predictions with the actual labels derived from
+alanine scanning analysis, a ROC curve is generated to evaluate the
+performance of the model.
 
-    You can indeed put it to the methods as you write below in Notes.
-    In that case, just improve the flow so here it sounds right
-    without the scheme.
+Following training, the classifier assigns a coefficient to each
+feature. The coefficients are used to determine a sample's
+classification by calculating a dot product between its feature vector
+and the coefficient vector.
+Therefore, for a given feature with coefficient a, the higher the
+abslute value of the coefficient, the more significant the feature is
+in classification. 
 
-.. figure:: _images/svm-flowchart.png
+.. _table-svm-coefs:
+
+.. csv-table::
+    :file: _tables/table-svm-coefs.csv
+    :header-rows: 1
+    :stub-columns: 1
+
+As it is apparent in :num:`Table #table-svm-coefs`,
+coefficients are most significant for fragment-based features
+(Fragment normalized rank, fragment size).
+The SV classification model we trained performs similarly on training-
+and test- sets (last two columns in the table), indicating robustness
+to training outliers.
+Performance is also consistent between CV iterations, again pointing
+to uniformity of the model learned.
+
+Based on these observations, we explore the redundancy in our choice
+of features by examining classifiers trained on different subsets of
+features.
+Training and testing is performed the same as before.
+However, we only present mean AUC values for each classifier.
+
+.. _table-svm-deltas:
+
+.. table:: Mean AUC values for different classifiers
+
+    ============================== ===================== ===================
+             Classifier             Mean AUC (training)   Mean AUC (testing) 
+    ============================== ===================== ===================
+    All features                           0.799                0.798        
+    $\Delta$ CASTp                         0.796                0.796        
+    $\Delta$ FTMap                         0.752                0.749        
+    $\Delta$ FTMap $\Delta$ CASTp          0.727                0.727        
+    FTMap                                  0.725                0.727        
+    CASTp                                  0.623                0.624        
+    ============================== ===================== ===================
+
+.. _fig-svm-deltas-roc:
+
+.. figure:: _images/fig-svm-deltas-roc.png
     :align: center
 
-    Schematic description of data flow in our classification model.
-
-We performed 3-fold stratified cross-validation (CV) of our classification
-model over the set of surface residues of bound receptor structures. 
-Each iteration involved training a classifier using two folds, and
-testing it on the third one.
-
-.. warning::
-
-    [ORA: change the word "folds": this is confusing as it could also mean structural fold. You can write: using 2/3 of the data set and testing on the remaining 1/3.]
-
-The classifier's performance is measured by the area under the ROC
-curve associated with it (AUC).
+    ROC curves of SVM classifiers during 4-fold cross-validation.
 
 .. note::
     
-    - only on full: add table detailing CV instances as rows, each described by the
-      feature weight vector it learned, its AUC using training and
-      test sets.
-      Last row should have mean & stddev values of all CVs
-
-    - generate mean ROC curves for different classifiers using CV:
-
-        - full classifier
-
-        - delta classifiers: remove one aspect
-        
-        - each aspect separately
-
     - this is why the linear kernel SVM is appropriate here:
 
         - it is less prone to overfitting, since the decision function
@@ -163,17 +213,9 @@ curve associated with it (AUC).
 
     - see SVM parameters used in FunHunt paper (Structure, 2007)
 
-.. warning::
-
-    [ORA: define ROC in the Methods section, or here....]
-
-.. figure:: _images/roc-svm.png
-    :align: center
-
-    ROC curves of SVM classifiers during 3-fold cross-validation.
-
-The model achieves a mean AUC of :math:`0.81`, with very little
-variance between CV instances. This supports our hypothesis that the
+The full model achieves a mean AUC of :math:`0.81`, with very little
+variance between CV instances. 
+This supports our hypothesis that the
 features we selected indeed carry a measurable signal disclosing the
 interface residues on a protein surface.
 
@@ -183,17 +225,98 @@ interface residues on a protein surface.
     
     You or/and Dana did feature elimination - here is the place to put the results: you reached the conclusion that these are the important parameters and others are not somehow, and this should be mentioned here ...
 
-Clustering highly-ranked residues is useful
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Clustering positively-classified residues is useful
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given an input protein structure, the SVM classifier we designed
-outputs a list of its surface residues, each scored with a probability of being a binding residue.
+outputs a list of its surface residues, each scored with a 
+probability of being a binding residue.
 
 In order to produce meaningful results out of such a list, we applied
-an extra step of clustering these residues hierarchically.
-That step produces a ranked set of residue clusters, each a
-geometrically-dense collection of presumably-binding surface residues
-as scored by the classifier.
+an extra step of clustering these residues, producing a ranked set of
+clusters, each a geometrically-dense collection of surface residues
+predicted to be binders by our classifier.
+
+We examined two different methods for clustering. The first is based
+on the Ward method [cite here], which produces a set of clusters, each
+limited in diameter [should be more accurate].
+The only parameters of this method are cluster diameter and number of
+neighbors.
+
+We also explored the use of DBSCAN. 
+The DBSCAN algorithm views clusters as areas of high density separated
+by areas of low density.  Due to this rather generic view, clusters
+found by DBSCAN can be any shape, as opposed to k-means which assumes
+that clusters are convex shaped. 
+
+The central component to the DBSCAN is the concept of core samples,
+which are samples that are in areas of high density. A cluster is
+therefore a set of core samples, each highly similar to each other and
+a set of non-core samples that are similar to a core sample (but are
+not themselves core samples).  There are two parameters to the
+algorithm, ``min_points`` and ``eps``, which define formally what we 
+mean when we say dense.  A higher ``min_points`` or lower ``eps`` indicate
+higher density necessary to form a cluster.
+
+More formally, we define a core sample as being a sample in the
+dataset such that there exists ``min_samples`` other samples with a
+similarity higher than ``eps`` to it, which are defined as neighbors of
+the core sample.  This tells us that the core sample is in a dense
+area of the vector space.  A cluster is a set of core samples, that
+can be built by recursively by taking a core sample, finding all of
+its neighbors that are core samples, finding all of their neighbors
+that are core samples, and so on.  A cluster also has a set of
+non-core samples, which are samples that are neighbors of a core
+sample in the cluster but are not themselves core samples.
+Intuitively, these samples are on the fringes of a cluster.
+
+Any core sample is part of a cluster, by definition. Further, any
+cluster has at least min_samples points in it, following the
+definition of a core sample. For any sample that is not a core sample,
+and does not have a similarity higher than eps to a core sample, it is
+considered an outlier by the algorithm.
+
+The algorithm is non-deterministic, however the core samples
+themselves will always belong to the same clusters (although the
+labels themselves may be different). The non-determinism comes from
+deciding on which cluster a non-core sample belongs to. A non-core
+sample can be have a similarity higher than eps to two core samples in
+different classes. Following from the triangular inequality, those two
+core samples would be less similar than eps from each other – else
+they would be in the same class. The non-core sample is simply
+assigned to which ever cluster is generated first, where the order is
+determined randomly within the code. Other than the ordering of, the
+dataset, the algorithm is deterministic, making the results relatively
+stable between iterations on the same data.
+
+Reference:
+“A Density-Based Algorithm for Discovering Clusters in Large Spatial
+Databases with Noise” Ester, M., H. P. Kriegel, J. Sander, and X. Xu,
+In Proceedings of the 2nd International Conference on Knowledge
+Discovery and Data Mining, Portland, OR, AAAI Press, pp. 226–231. 1996
+
+.. _fig-svm-clustering-size-hist:
+
+.. figure:: _images/fig-svm-clustering-size-hist.png
+    :align: center
+    :width: 75%
+
+    Cluster size distributions of both clustering methods (Ward,
+    DBSCAN).
+
+Clustering methods differ in performance:
+
+.. _fig-svm-clustering-methods:
+
+.. figure:: _images/fig-svm-clustering-methods-top1.png
+    :align: center
+    :width: 75%
+    
+.. figure:: _images/fig-svm-clustering-methods-top3.png
+    :align: center
+    :width: 75%
+    
+
 
 .. note::
     
@@ -203,12 +326,13 @@ as scored by the classifier.
 
     That supports the clustering approach generally as a direction.
 
-For each input protein, we calculate precision and recall of the
-classifier over a subset of output clusters. For instance, "top-3
-recall" means the average of binding site recall rates, calculated
-over the 3 top-ranked clusters.
-Clusters are ranked by spatial clustering degree, aiming for
-tightly-knit groups of positive predictions to be ranked high.
+.. comment
+    For each input protein, we calculate precision and recall of the
+    classifier over a subset of output clusters. For instance, "top-3
+    recall" means the average of binding site recall rates, calculated
+    over the 3 top-ranked clusters.
+    Clusters are ranked by spatial clustering degree, aiming for
+    tightly-knit groups of positive predictions to be ranked high.
 
 
 .. warning::
