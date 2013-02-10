@@ -63,10 +63,6 @@ without any knowledge of the peptide or where it binds.
     This analysis is used to derive features 
     We quantify a residue's probability of by deriving
     residues by their capacity to 
-    #
-    #
-    Structural features indicate the binding site
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to distinguish binding site residues from others, each
 residue in the data set is described by 6 features derived from
@@ -101,7 +97,8 @@ set of bound receptor structures.
 Fragment-based features are highly indicative of binding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We performed 4-fold stratified cross-validation (CV) of our
+To test the viability of our approach, 
+we performed 4-fold stratified cross-validation (CV) of our
 classification model over the set of surface residues of bound
 receptor structures. 
 Residues in the data sets were divided into subsets such that all the
@@ -128,6 +125,17 @@ in classification.
     :file: _tables/table-svm-coefs.csv
     :header-rows: 1
     :stub-columns: 1
+
+    Feature coefficients and overall performance of the SVM classifier
+    over different cross-validation iterations. 
+    First six columns detail coefficients of the six features used in
+    the model, as learned from training data. Columns *AUC (training)*
+    and *AUC (testing)* provide an estimate of the model's performance
+    in each iteration.
+
+    Note that *fragment Normalized Rank* vastly dominates other
+    features in terms of weight in the learned model, followed by
+    *conservation Score*.
 
 As it is apparent in :num:`Table #table-svm-coefs`,
 coefficients are most significant for fragment-based features
