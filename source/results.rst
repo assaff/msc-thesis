@@ -38,13 +38,17 @@ PePIs described by London et al in previous work.
 In other words, we use these features as a *chemical fingerprint* of
 residues involved in PePIs.
 
-By defining a peptide binding site by the receptor residues in
-proximity to the peptide in the bound complex, one would 
+By defining a peptide binding site as a set of receptor residues that take
+part in interaction with the peptide in the bound complex, one would 
 be able to locate it by identifying surface residues that have high
 capacity to take part in these interactions.
 In this section we consider classification performance at the residue
 level, i.e. each solvent-accessible residue in the protein is
 classified as binder or non-binder with some level of confidence.
+
+Our goal is to identify these residues in the receptor structure
+(whether bound or unbound), using these intrinsic properties, but
+without any knowledge of the peptide or where it binds.
 
 .. comment
     These residues can be characterized by their capacity to take part in the chemical processes described above.
@@ -68,35 +72,29 @@ In order to distinguish binding site residues from others, each
 residue in the data set is described by 6 features derived from
 analyses of its receptor protein by a variety of tools (see
 :num:`Table #table-svm-features`).
-
-.. comment
-    In Methods, we described multiple protocols which can be used to
-    derive features that characterize the protein surface (namely FTMap,
-    CASTp, ConSurf, polarity, hbonding).
-    While these protocols analyze the entire receptor, we derive features
-    that describe individual residues.
-
-These features are integrated into a
-support-vector classifier (see :ref:`methods-svm`) that should
-distinguish peptide-binding residues from the rest.
-
-.. comment
-    Output data from these protocols feed into our SVM model, such
-    that they inform the model about different characteristics of the
-    residues in question.
-
-In addition, each residue is labeled as binder if computational
+Additionally, each residue is labeled as binder if computational
 alanine scanning (using Rosetta) indicated a high increase in
 interaction energy upon mutation to alanine.
+
+Feature data and true labels are all integrated into a support-vector
+classifier (see :ref:`methods-svm`) that should distinguish
+peptide-binding residues from the rest.
+Our SVM pipeline (see :num:`Figure #fig-svm-flowchart`) fits a linear
+function :math:`S` (hyperplane) over the set of features that
+optimally separates the labels of the training data.
+Subsequently, it calculates said function over residues in the test
+set to classify them as binders or non-binders; a sample :math:`r` is
+classified as positive if and only if :math:`S(r)>0`.
+Comparing classification labels to true labels produces a measure of
+the model's performance.
+
+.. _fig-svm-flowchart:
 
 .. figure:: _images/svm-flowchart.png
     :align: center
 
-    Schematic description of data flow in our classification model.
+    Schematic description of data flow in our SVM pipeline.
 
-Our goal is to identify these residues in the receptor structure
-(whether bound or unbound), using these intrinsic properties, but
-without any knowledge of the peptide or where it binds.
 As a starting point, we trained our model on surface residues from the
 set of bound receptor structures.
 
