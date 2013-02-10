@@ -36,6 +36,38 @@ Discrete variables were assigned consecutive integer values.
 All variables then underwent normalization (for details, see Methods
 section).
 
+.. _table-svm-features:
+
+.. list-table:: Features used in SVM classification of surface residues.
+    :stub-columns: 1
+    :header-rows: 1
+    :widths: 2 1 4
+
+    * - Feature name
+      - Source
+      - Description
+    * - Fragment Normalized Rank
+      - FTMap
+      - rank of the CS
+    * - Fragment Size
+      - FTMap
+      - Size of the nearest CS
+    * - Conservation Score
+      - ConSurf DB
+      - Normalized conservations score assigned to
+        the residue using a MSA
+    * - Pocket Size
+      - CASTp
+      - Normalized size of the nearest pocket
+    * - Polarity
+      - Protein sequence
+      - Whether the residue is polar, i.e. belongs to the following
+        amino acids: [....]
+    * - Hydrogen-bonding
+      - Protein sequence
+      - Whether the residue is prone to form hydrogen bonds,
+        i.e. belongs to the list [....]
+
 
 .. attention::
     Perhaps something about the need for peptidb and other data sets.
