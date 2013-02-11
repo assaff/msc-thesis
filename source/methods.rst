@@ -68,6 +68,19 @@ section).
       - Whether the residue is prone to form hydrogen bonds,
         i.e. belongs to the list [....]
 
+.. note::
+    
+    - this is why the linear kernel SVM is appropriate here:
+
+        - it is less prone to overfitting, since the decision function
+          is very simple
+
+        - it is decomposable: the parameters learned by the model are
+          meaningful to a human, and do not require mathematical
+          manipulation.
+
+    - see SVM parameters used in FunHunt paper (Structure, 2007)
+
 
 .. attention::
     Perhaps something about the need for peptidb and other data sets.

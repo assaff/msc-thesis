@@ -184,19 +184,6 @@ However, we only present mean AUC values for each classifier.
 
     ROC curves of SVM classifiers during 4-fold cross-validation.
 
-.. note::
-    
-    - this is why the linear kernel SVM is appropriate here:
-
-        - it is less prone to overfitting, since the decision function
-          is very simple
-
-        - it is decomposable: the parameters learned by the model are
-          meaningful to a human, and do not require mathematical
-          manipulation.
-
-    - see SVM parameters used in FunHunt paper (Structure, 2007)
-
 The full model achieves a mean AUC of :math:`0.81`, with very little
 variance between CV instances. 
 This supports our hypothesis that the
