@@ -140,6 +140,16 @@ in classification.
 As it is apparent in :num:`Table #table-svm-coefs`,
 coefficients are most significant for fragment-based features
 (Fragment normalized rank, fragment size).
+Recalling that FTMap analysis considers many physico-chemical
+properties of the probe-receptor interaction, it is no accident that
+it drives most of the analysis. 
+All of the other features (surface geometry/pockets, hydrogen-bonding,
+polarity) are already encoded in that analysis, and hence dependent to
+some extent on it.
+The only feature in our feature set not taken into account in FTMap
+analysis is conservation, and indeed, it is second most-significant in
+terms of weight.
+
 The SV classification model we trained performs similarly on training-
 and test- sets (last two columns in the table), indicating robustness
 to training outliers.
