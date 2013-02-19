@@ -126,13 +126,13 @@ in classification.
     :header-rows: 1
     :stub-columns: 1
 
+.. table comments:
     Feature coefficients and overall performance of the SVM classifier
     over different cross-validation iterations. 
     First six columns detail coefficients of the six features used in
     the model, as learned from training data. Columns *AUC (training)*
     and *AUC (testing)* provide an estimate of the model's performance
     in each iteration.
-
     Note that *fragment Normalized Rank* vastly dominates other
     features in terms of weight in the learned model, followed by
     *conservation Score*.
