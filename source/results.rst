@@ -156,6 +156,8 @@ to training outliers.
 Performance is also consistent between CV iterations, again pointing
 to uniformity of the model learned.
 
+--------------------
+
 Based on these observations, we explore the redundancy in our choice
 of features by examining classifiers trained on different subsets of
 features.
@@ -184,18 +186,16 @@ However, we only present mean AUC values for each classifier.
 
     ROC curves of SVM classifiers during 4-fold cross-validation.
 
-The full model achieves a mean AUC of :math:`0.81`, with very little
+The full model achieves a mean AUC of :math:`0.8`, with very little
 variance between CV instances. 
-This supports our hypothesis that the
-features we selected indeed carry a measurable signal disclosing the
-interface residues on a protein surface.
+This supports our hypothesis that the features we selected indeed
+carry a measurable signal disclosing the interface residues on a
+protein surface.
 
 .. warning::
 
     ORA: here give the weights of the different features in the different models: are they always similar, and what do they mean. e.g. show that the FTmap input provides a strong signal by itself.
     
-    You or/and Dana did feature elimination - here is the place to put the results: you reached the conclusion that these are the important parameters and others are not somehow, and this should be mentioned here ...
-
 Clustering positively-classified residues is useful
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
