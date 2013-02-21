@@ -256,19 +256,6 @@ Clustering methods differ in performance:
 
     That supports the clustering approach generally as a direction.
 
-.. comment
-    For each input protein, we calculate precision and recall of the
-    classifier over a subset of output clusters. For instance, "top-3
-    recall" means the average of binding site recall rates, calculated
-    over the 3 top-ranked clusters.
-    Clusters are ranked by spatial clustering degree, aiming for
-    tightly-knit groups of positive predictions to be ranked high.
-
-
-.. warning::
-
-    [ORA: The paragraph above belongs to methods (you can judge when you write a very technical description that it probably needs to be moved). Here you should rather provide the results: show a figure that exemplifies an output, and how clustering in space helps focusing on dense clusters.]
-
 This pipeline essentially constitutes a prediction protocol, which
 upon an input protein structure generates a ranked list of residue
 clusters as predicted binding sites.
@@ -287,42 +274,10 @@ clusters as predicted binding sites.
     It is sufficient to state that it was a more practical choice, and
     it also captures knobs-in-holes.
 
-Performance of SVM is dependent on xyz, therefore we 
-We examined multiple configurations of the SVM to optimized recall and
-precision on training sets, obtaining performance data for each (see
-figure comparing different classifiers we tried).
-
-
 .. warning::
 
     [ORA: The transition between the per residue and per site assessment is a little difficult to follow: you should present the data in a similar format. So in addition to the ROC above, you could provide a similar plot to Figure 4.3., and compare it to 4.4.? It is still not clear why you needed clustering from your text, and how you compare, and define, "performance" in both contexts. (I can of course retrace it after I read the full text, but this should be clear to a layman during his reading, not only at the end...).]
 
-We experimented with different parameters of the SVM model, including:
-
-* The SVM score cutoff above which a residue is labeled binding.
-* The features on which the learning was based.
-* Clustering parameters (see ``cluster_residues.py`` in ``peptalk``
-  project).
-
-.. warning::
-
-    Figure xx shows the performance using different combinations. 
-    
-    [ORA: you need to provide a legend of the different combinations, and connect this to the list above. I suggest that instead of the path as x-axis label, you A,B.... and then you specifiy what A,B... represent, in words].
-
-.. figure:: _images/top1_classifiers.png
-    :align: center
-    :width: 100%
-    
-    performance of different classifiers trained on PeptiDB, in terms
-    of recall (blue), precision (orange) and F1-score (yellow).
-
-.. figure:: _images/top5_classifiers.png
-    :align: center
-    :width: 100%
-
-    performance of the same classifiers, as measured over the top1
-    clusters in each classifiers.
 
 Insights from the SVM model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
