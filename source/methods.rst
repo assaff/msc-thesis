@@ -46,19 +46,19 @@ section).
     * - Feature name
       - Source
       - Description
-    * - Fragment Normalized Rank
+    * - CS normalized rank
       - FTMap
-      - rank of the CS
-    * - Fragment Size
+      - Rank of the CS relative to its size
+    * - Num-nearby-CSs
       - FTMap
-      - Size of the nearest CS
+      - Number of CSs near the residue
     * - Conservation Score
       - ConSurf DB
       - Normalized conservations score assigned to
         the residue using a MSA
-    * - Pocket Size
+    * - Pocket rank
       - CASTp
-      - Normalized size of the nearest pocket
+      - Normalized rank of the nearest pocket
     * - Polarity
       - Protein sequence
       - Whether the residue is polar, i.e. belongs to the following
