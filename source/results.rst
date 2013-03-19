@@ -76,12 +76,12 @@ Feature data and true labels are all integrated into a support-vector
 classifier (see :ref:`methods-svm`) that should distinguish
 peptide-binding residues from the rest.
 Our SVM pipeline (see :num:`Figure #fig-svm-flowchart`) fits a linear
-function :math:`S` (hyperplane) over the set of features that
+function :math:`S` (hyperplane) over the feature space, such that it
 optimally separates the labels of the training data.
 Subsequently, it calculates said function over residues in the test
 set to classify them as binders or non-binders; a sample :math:`r` is
-classified as positive if and only if :math:`S(r)>0`.
-Comparing classification labels to true labels produces a measure of
+predicted positive if and only if :math:`S(r)>0`.
+Comparing predicted with true labels produces a measure of
 the model's performance.
 
 .. _fig-svm-flowchart:
@@ -91,8 +91,11 @@ the model's performance.
 
     Schematic description of data flow in our SVM pipeline.
 
-As a starting point, we trained our model on surface residues from the
-set of bound receptor structures.
+During initial assessment of our method, we trained our model
+on surface residues from the set of bound receptor structures,
+thereby avoiding the added complexity that may result from
+conformational change in the receptor between bound an unbound states.
+
 
 Fragment-based features are highly indicative of binding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
