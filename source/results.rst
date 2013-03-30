@@ -108,6 +108,7 @@ Residues in the data sets were divided into subsets such that all the
 residues from any particular receptors belong to the same subset.
 **[Assaf: difficult to describe the value of this stratification in one
 sentence.]**
+
 Each iteration involved training a classifier using all-but-one
 subset, and predicting the remaining subset of residues.
 Comparing the model's predictions with the actual labels derived from
@@ -119,7 +120,7 @@ feature. The coefficients are used to determine a sample's
 classification by calculating a dot product between its feature vector
 and the coefficient vector.
 Therefore, for a given feature with coefficient a, the higher the
-abslute value of the coefficient, the more significant the feature is
+absolute value of the coefficient, the more significant the feature is
 in classification. 
 
 .. _table-svm-coefs:
